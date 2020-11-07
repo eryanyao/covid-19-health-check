@@ -21,5 +21,5 @@
         android:layout_height="wrap_content"
         android:text="Log in with your student ID"
         tools:layout_editor_absoluteX="73dp"
-        tools:layout_editor_absoluteY="178dp" />
+        tools:layout_editor_absoluteY="232dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

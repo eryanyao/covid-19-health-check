@@ -39,19 +39,7 @@ public class MainActivity extends AppCompatActivity {
                                     + firebaseUser.getEmail()
                             ,
                             Toast.LENGTH_LONG).show();
-                    DocumentReference df =
-                            firestore.collection("User").document(firebaseUser.getUid());
-                    df.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                        @Override public void onSuccess(DocumentSnapshot documentSnapshot) {
-                            if(documentSnapshot.exists()){
 
-                            }
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override public void onFailure(@NonNull Exception e) {
-
-                        }
-                    });
                 } else {
                     Toast.makeText(MainActivity.this, "Please Login.", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(MainActivity.this, LoginOuterActivity.class);
