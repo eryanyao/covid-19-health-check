@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "262795951072",
+    "firebase_url": "https://g3-covid-project.firebaseio.com",
+    "project_id": "g3-covid-project",
+    "storage_bucket": "g3-covid-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:262795951072:android:0580a680db884b77260985",
+        "android_client_info": {
+          "package_name": "com.example.g3"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "262795951072-qhs1mp39nqoocgs6o5fg6njtdvrp153r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDuMD1_ZwYCmvGd2EnsAdU-xbqvlXkba8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "262795951072-qhs1mp39nqoocgs6o5fg6njtdvrp153r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
