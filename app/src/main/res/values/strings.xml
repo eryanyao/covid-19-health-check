@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">G3</string>
+    <string name="survey_desc">Our goal is to learn and predict which geo</string>
+    <string name="inti_med">INTI Medicine</string>
 </resources>

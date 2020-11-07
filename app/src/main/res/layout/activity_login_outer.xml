@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginOuterActivity">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="294dp"
+        android:layout_height="31dp"
+        android:text="TAKE YOUR DAILY HEALTH CHECK "
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="58dp"
+        tools:layout_editor_absoluteY="121dp" />
+
+    <Button
+        android:id="@+id/btnThroughLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Log in with your student ID"
+        tools:layout_editor_absoluteX="73dp"
+        tools:layout_editor_absoluteY="178dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
