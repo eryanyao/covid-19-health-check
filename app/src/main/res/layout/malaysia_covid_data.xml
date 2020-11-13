@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_white"
-    tools:context=".covid.CovidActivity">
+    tools:context=".covid.MalaysiaActivity">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardViewGraph"
@@ -24,7 +24,7 @@
             android:weightSum="2">
 
             <org.eazegraph.lib.charts.PieChart
-                android:id="@+id/piechart"
+                android:id="@+id/piechartMalaysia"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="5dp"
@@ -130,7 +130,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginBottom="0dp"
+        android:layout_marginBottom="10dp"
         app:cardCornerRadius="5dp"
         app:cardElevation="10dp">
 
@@ -139,7 +139,7 @@
             android:layout_height="match_parent">
 
             <com.leo.simplearcloader.SimpleArcLoader
-                android:id="@+id/loader"
+                android:id="@+id/loaderMalaysia"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_centerInParent="true"
@@ -147,7 +147,7 @@
                 app:arc_style="simple_arc"></com.leo.simplearcloader.SimpleArcLoader>
 
             <ScrollView
-                android:id="@+id/scrollStats"
+                android:id="@+id/scrollStatsMalaysia"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:visibility="gone">
@@ -162,7 +162,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="25dp"
                         android:layout_marginTop="20dp"
-                        android:text="global stats"
+                        android:text="Malaysia status"
                         android:textAllCaps="true"
                         android:textSize="14sp"
                         android:textStyle="bold" />
@@ -191,7 +191,7 @@
                             android:textSize="18sp" />
 
                         <TextView
-                            android:id="@+id/tvCases"
+                            android:id="@+id/tvCasesMalaysia"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
@@ -228,7 +228,7 @@
                             android:textSize="18sp" />
 
                         <TextView
-                            android:id="@+id/tvRecovered"
+                            android:id="@+id/tvRecoveredMalaysia"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
@@ -264,7 +264,7 @@
                             android:textSize="18sp" />
 
                         <TextView
-                            android:id="@+id/tvCritical"
+                            android:id="@+id/tvCriticalMalaysia"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
@@ -301,7 +301,7 @@
                             android:textSize="18sp" />
 
                         <TextView
-                            android:id="@+id/tvActive"
+                            android:id="@+id/tvActiveMalaysia"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
@@ -338,7 +338,7 @@
                             android:textSize="18sp" />
 
                         <TextView
-                            android:id="@+id/tvTodayCases"
+                            android:id="@+id/tvTodayCasesMalaysia"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
@@ -375,7 +375,7 @@
                             android:textSize="18sp" />
 
                         <TextView
-                            android:id="@+id/tvTotalDeaths"
+                            android:id="@+id/tvTotalDeathsMalaysia"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
@@ -412,7 +412,7 @@
                             android:textSize="18sp" />
 
                         <TextView
-                            android:id="@+id/tvTodayDeaths"
+                            android:id="@+id/tvTodayDeathsMalaysia"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
@@ -433,41 +433,6 @@
                         android:layout_marginRight="20dp"
                         android:background="@color/color_two" />
 
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="25dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginRight="25dp"
-                        android:layout_marginBottom="10dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-light"
-                            android:text="Affected Countries"
-                            android:textSize="18sp" />
-
-                        <TextView
-                            android:id="@+id/tvAffectedCountries"
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentRight="true"
-                            android:fontFamily="sans-serif-light"
-                            android:text="0"
-                            android:textAlignment="textEnd"
-                            android:textColor="@color/color_one"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
-
-                    </RelativeLayout>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginRight="20dp"
-                        android:background="@color/color_two" />
 
                 </LinearLayout>
 
@@ -475,38 +440,6 @@
 
         </RelativeLayout>
 
-
     </androidx.cardview.widget.CardView>
-
-
-    <Button
-        android:id="@+id/btnTrack"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/btnTrack2"
-        android:layout_marginBottom="-4dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:background="@color/color_one"
-        android:onClick="goMalaysiaCovidActivity"
-        android:padding="5dp"
-        android:text="Malaysia"
-        android:textColor="@android:color/white"
-        android:textSize="18sp" />
-
-    <Button
-        android:id="@+id/btnTrack2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="20dp"
-        android:background="@color/color_one"
-        android:onClick="goTrackCountries"
-        android:padding="5dp"
-        android:text="Track countries"
-        android:textColor="@android:color/white"
-        android:textSize="18sp" />
-
 
 </RelativeLayout>
