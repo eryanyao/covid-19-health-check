@@ -120,9 +120,15 @@ public class MainPageActivity extends AppCompatActivity {
 
         btnSurvey.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View view) {
-
+                goToUrl("https://forms.office.com/Pages/ResponsePage.aspx?id=4tZeri9oNkSj0tBxhvLB2iBKZKHFr79KjmxF1C9qLrpUNjJKNUc1S1pQUTRQNkRWWEtPM0pHS0RVQi4u");
             }
         });
+    }
+
+    private void goToUrl (String url) {
+        Uri uriUrl = Uri.parse(url);
+        Intent launchBrowser = new Intent(Intent.ACTION_VIEW, uriUrl);
+        startActivity(launchBrowser);
     }
 
     @Override public boolean onCreateOptionsMenu(Menu menu) {
@@ -318,8 +324,6 @@ public class MainPageActivity extends AppCompatActivity {
                     txtId.setText(ic);
                     txtEmail.setText(email);
                 }
-
-
             }
         });
 
