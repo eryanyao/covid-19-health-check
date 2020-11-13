@@ -88,7 +88,6 @@ public class MainPageActivity extends AppCompatActivity {
         btnSurvey = findViewById(R.id.btnSurvey);
 
         updateUser();
-
         if(firebaseUser.getPhotoUrl() != null){
             Glide.with(this)
                     .load(firebaseUser.getPhotoUrl())
@@ -259,8 +258,8 @@ public class MainPageActivity extends AppCompatActivity {
     public Bitmap CreateImage(String message) throws WriterException
     {
 
-        BitMatrix bitMatrix =  new MultiFormatWriter().encode(message, BarcodeFormat.QR_CODE.CODE_128, size_width,
-                size_height);
+        BitMatrix bitMatrix =  new MultiFormatWriter().encode(message, BarcodeFormat.QR_CODE, size_width
+                , size_height);
 
         int width = bitMatrix.getWidth();
         int height = bitMatrix.getHeight();
