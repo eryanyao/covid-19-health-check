@@ -49,7 +49,7 @@ import java.util.Calendar;
 
 public class MainPageActivity extends AppCompatActivity {
     ImageView imgUser,success_imageview;
-    Button btnBar,btnSurvey,btnCovid,btnSettings,btnLogout;
+    Button btnBar,btnSurvey,btnCovid,btnSettings,btnLogout, btnSurveyInsight;
     TextView txtName,txtId,txtRole,txtEmail,success_text;
 
     FirebaseAuth firebaseAuth;
@@ -86,6 +86,7 @@ public class MainPageActivity extends AppCompatActivity {
         btnSettings = findViewById(R.id.btnSettings);
         btnCovid = findViewById(R.id.btnCovid);
         btnSurvey = findViewById(R.id.btnSurvey);
+        btnSurveyInsight = findViewById(R.id.btnSurveyInsight);
 
         updateUser();
         if(firebaseUser.getPhotoUrl() != null){
@@ -120,7 +121,22 @@ public class MainPageActivity extends AppCompatActivity {
 
         btnSurvey.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View view) {
+                openSurvey();
+            }
+        });
 
+//        btnSurveyInsight.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                openSurveyInsight();
+//            }
+//        });
+        btnSurveyInsight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse("https://app.powerbi.com/reportEmbed?reportId=3c155143-d316-41c9-9a9f-e08377412f39&autoAuth=true&ctid=ae5ed6e2-682f-4436-a3d2-d07186f2c1da&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLXNvdXRoLWVhc3QtYXNpYS1yZWRpcmVjdC5hbmFseXNpcy53aW5kb3dzLm5ldC8ifQ%3D%3D");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
             }
         });
     }
@@ -297,6 +313,16 @@ public class MainPageActivity extends AppCompatActivity {
 
     public void covid(){
         Intent intent = new Intent(this, CovidActivity.class);
+        startActivity(intent);
+    }
+
+    public void openSurvey() {
+        Intent intent = new Intent(this, SurveyActivity.class);
+        startActivity(intent);
+    }
+
+    public void openSurveyInsight() {
+        Intent intent = new Intent(this, SurveyInsightActivity.class);
         startActivity(intent);
     }
 
