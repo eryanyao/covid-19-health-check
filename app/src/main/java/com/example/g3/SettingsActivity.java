@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -64,7 +65,22 @@ public class SettingsActivity extends AppCompatActivity {
                         new OnSuccessListener<UploadTask.TaskSnapshot>() {
                             @Override public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                                 Uri downloadUrl = taskSnapshot.getUploadSessionUri();
-
+                                UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                        .setPhotoUri(downloadUrl)
+                                        .build();
+                                firebaseUser.updateProfile(profileUpdates).addOnSuccessListener(
+                                        new OnSuccessListener<Void>() {
+                                            @Override public void onSuccess(Void aVoid) {
+                                                Toast.makeText(SettingsActivity.this,"User Profile " +
+                                                        "Updated Successfully.",
+                                                        Toast.LENGTH_SHORT).show();
+                                            }
+                                        }).addOnFailureListener(new OnFailureListener() {
+                                    @Override public void onFailure(@NonNull Exception e) {
+                                        Toast.makeText(SettingsActivity.this,"User Profile " +
+                                                "Updated Unsuccessfully.",Toast.LENGTH_SHORT).show();
+                                    }
+                                });
 
 
                             }
