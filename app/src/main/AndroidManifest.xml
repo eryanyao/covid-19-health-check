@@ -27,7 +27,7 @@
         </activity>
         <activity android:name=".covid.AffectedCountries"></activity>
         <activity android:name=".covid.DetailActivity"></activity>
-        <activity android:name=".covid.MalaysiaActivity"></activity>
+        <activity android:name=".covid.MalaysiaActivity" android:parentActivityName=".covid.CovidActivity"></activity>
 
     </application>
 

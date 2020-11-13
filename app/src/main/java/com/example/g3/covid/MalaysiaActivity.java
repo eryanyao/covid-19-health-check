@@ -37,7 +37,7 @@ public class MalaysiaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.malaysia_covid_data);
 
-        getSupportActionBar().setTitle("Malaysia Covid-19 Status");
+        getSupportActionBar().setTitle("Malaysia Covid-19 Overview");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 

@@ -36,10 +36,9 @@ public class CovidActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.covid_act_main);
 
-        getSupportActionBar().setTitle("Covid-19 Tracker");
+        getSupportActionBar().setTitle("Global Covid-19 Overview");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-
 
         tvCases = findViewById(R.id.tvCases);
         tvRecovered = findViewById(R.id.tvRecovered);
@@ -59,6 +58,7 @@ public class CovidActivity extends AppCompatActivity {
 
     private void fetchData() {
 
+        // https://www.coronatracker.com/country/malaysia/
         //get global's covid-19 data
         String url = "https://disease.sh/v3/covid-19/all";
 

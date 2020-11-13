@@ -88,6 +88,7 @@ public class AffectedCountries extends AppCompatActivity {
 
     private void fetchData() {
 
+        // https://www.coronatracker.com/country/malaysia/
         //get every country's covid-19 data
         String url = "https://disease.sh/v3/covid-19/countries";
 
