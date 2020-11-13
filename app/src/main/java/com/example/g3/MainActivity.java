@@ -38,7 +38,9 @@ public class MainActivity extends AppCompatActivity {
                             "Login Sucessfully.\nWelcome Back\n"
                                     + firebaseUser.getEmail()
                             ,
-                            Toast.LENGTH_LONG).show();
+                            Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(MainActivity.this, MainPageActivity.class);
+                    startActivity(intent);
 
                 } else {
                     Toast.makeText(MainActivity.this, "Please Login.", Toast.LENGTH_SHORT).show();
