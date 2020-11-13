@@ -64,8 +64,8 @@ public class SettingsActivity extends AppCompatActivity {
                         new OnSuccessListener<UploadTask.TaskSnapshot>() {
                             @Override public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                                 Uri downloadUrl = taskSnapshot.getUploadSessionUri();
-                                
-                                firebaseUser.updateProfile()
+
+
 
                             }
                         });
