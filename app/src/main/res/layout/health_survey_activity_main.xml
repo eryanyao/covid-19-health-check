@@ -12,15 +12,8 @@
     <LinearLayout
         android:id="@+id/linearView"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/textViewSteps"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Step 1 of 2" />
 
         <TextView
             android:id="@+id/textView4"
@@ -35,6 +28,7 @@
             android:id="@+id/textView5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:layout_weight="1"
             android:text="If you don't have any of these symptoms, there's no need for you to do anything right now. If you develop any of these symptoms, check them on this app and book a free test immediately." />
     </LinearLayout>
@@ -42,7 +36,7 @@
     <LinearLayout
         android:id="@+id/linearSelection"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/linearView"
         android:orientation="vertical">
 
@@ -50,29 +44,31 @@
             android:id="@+id/cardviewTemperature"
             android:layout_width="match_parent"
             android:layout_height="137dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="5dp"
             app:cardCornerRadius="5dp"
             app:cardElevation="10dp">
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="10dp"
-                android:orientation="vertical">
-
-            <androidx.appcompat.widget.AppCompatCheckBox
-                android:id="@+id/checkBoxTemperature"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="A high temperature (fever)" />
-
-            <TextView
-                android:id="@+id/textView6"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/high_temperature_desc" />
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <androidx.appcompat.widget.AppCompatCheckBox
+                    android:id="@+id/checkBoxTemperature"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="A high temperature (fever)" />
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="@string/high_temperature_desc" />
 
             </LinearLayout>
 
@@ -82,9 +78,9 @@
             android:id="@+id/cardviewCough"
             android:layout_width="match_parent"
             android:layout_height="137dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="5dp"
             android:padding="10dp"
             app:cardCornerRadius="5dp"
             app:cardElevation="10dp">
@@ -92,20 +88,22 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="10dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="10dp">
 
-            <androidx.appcompat.widget.AppCompatCheckBox
-                android:id="@+id/checkBoxContinuousCough"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="A new continuous cough" />
+                <androidx.appcompat.widget.AppCompatCheckBox
+                    android:id="@+id/checkBoxContinuousCough"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="A new continuous cough" />
 
-            <TextView
-                android:id="@+id/textView7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/continuous_cough_desc" />
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="@string/continuous_cough_desc" />
 
             </LinearLayout>
 
@@ -115,9 +113,9 @@
             android:id="@+id/cardviewTaste"
             android:layout_width="match_parent"
             android:layout_height="137dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="5dp"
             android:padding="10dp"
             app:cardCornerRadius="5dp"
             app:cardElevation="10dp">
@@ -125,24 +123,45 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="10dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="10dp">
 
-            <androidx.appcompat.widget.AppCompatCheckBox
-                android:id="@+id/checkBoxTaste"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="A change to your sense of smell or taste" />
+                <androidx.appcompat.widget.AppCompatCheckBox
+                    android:id="@+id/checkBoxTaste"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="A change to your sense of smell or taste" />
 
-            <TextView
-                android:id="@+id/textView8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/change_taste_desc" />
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="@string/change_taste_desc" />
 
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
+
+        <Button
+            android:id="@+id/btnContinues"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Continues"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnDontHave"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="I dont have any of this symptoms"
+            android:textColor="#03A9F4"
+            android:textSize="12sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
