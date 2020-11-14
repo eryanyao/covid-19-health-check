@@ -13,7 +13,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.g3.settings.EditProfileActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -34,8 +36,10 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-        setTitle("Settings");
 
+        getSupportActionBar().setTitle("Settings");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         firebaseAuth = FirebaseAuth.getInstance();
         mStorageRef = FirebaseStorage.getInstance().getReference();
@@ -45,9 +49,8 @@ public class SettingsActivity extends AppCompatActivity {
 
         btnImg.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View view) {
-                Intent openGalleryIntent = new Intent(Intent.ACTION_PICK,
-                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(openGalleryIntent,1000);
+                Intent intent = new Intent(SettingsActivity.this, EditProfileActivity.class);
+                startActivity(intent);
             }
         });
     }
@@ -64,7 +67,22 @@ public class SettingsActivity extends AppCompatActivity {
                         new OnSuccessListener<UploadTask.TaskSnapshot>() {
                             @Override public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                                 Uri downloadUrl = taskSnapshot.getUploadSessionUri();
-
+                                UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                        .setPhotoUri(downloadUrl)
+                                        .build();
+                                firebaseUser.updateProfile(profileUpdates).addOnSuccessListener(
+                                        new OnSuccessListener<Void>() {
+                                            @Override public void onSuccess(Void aVoid) {
+                                                Toast.makeText(SettingsActivity.this,"User Profile " +
+                                                        "Updated Successfully.",
+                                                        Toast.LENGTH_SHORT).show();
+                                            }
+                                        }).addOnFailureListener(new OnFailureListener() {
+                                    @Override public void onFailure(@NonNull Exception e) {
+                                        Toast.makeText(SettingsActivity.this,"User Profile " +
+                                                "Updated Unsuccessfully.",Toast.LENGTH_SHORT).show();
+                                    }
+                                });
 
 
                             }

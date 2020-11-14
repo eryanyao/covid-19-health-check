@@ -39,6 +39,7 @@ import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
+import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -47,10 +48,15 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class MainPageActivity extends AppCompatActivity {
-    ImageView imgUser,success_imageview;
-    Button btnBar,btnSurvey,btnCovid,btnSettings,btnLogout;
+
+    ImageView success_imageview,barcode_iv;
+    Button btnBar,btnSurvey,btnCovid,btnSettings,btnLogout, btnSurveyInsight;
+
     TextView txtName,txtId,txtRole,txtEmail,success_text;
+    CircleImageView imgUser;
 
     FirebaseAuth firebaseAuth;
     FirebaseFirestore firestore;
@@ -60,6 +66,7 @@ public class MainPageActivity extends AppCompatActivity {
 
     private String barcorde;
     private Bitmap myBitmap;
+    private Bitmap myBarCode;
     private String time;
 
     private int size = 660;
@@ -86,13 +93,12 @@ public class MainPageActivity extends AppCompatActivity {
         btnSettings = findViewById(R.id.btnSettings);
         btnCovid = findViewById(R.id.btnCovid);
         btnSurvey = findViewById(R.id.btnSurvey);
+        btnSurveyInsight = findViewById(R.id.btnSurveyInsight);
 
         updateUser();
-        if(firebaseUser.getPhotoUrl() != null){
-            Glide.with(this)
-                    .load(firebaseUser.getPhotoUrl())
-                    .into(imgUser);
-        }
+
+
+
 
         btnBar.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View view) {
@@ -121,8 +127,30 @@ public class MainPageActivity extends AppCompatActivity {
         btnSurvey.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View view) {
 
+                openSurvey();
             }
         });
+
+//        btnSurveyInsight.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                openSurveyInsight();
+//            }
+//        });
+        btnSurveyInsight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse("https://app.powerbi.com/reportEmbed?reportId=3c155143-d316-41c9-9a9f-e08377412f39&autoAuth=true&ctid=ae5ed6e2-682f-4436-a3d2-d07186f2c1da&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLXNvdXRoLWVhc3QtYXNpYS1yZWRpcmVjdC5hbmFseXNpcy53aW5kb3dzLm5ldC8ifQ%3D%3D");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void goToUrl (String url) {
+        Uri uriUrl = Uri.parse(url);
+        Intent launchBrowser = new Intent(Intent.ACTION_VIEW, uriUrl);
+        startActivity(launchBrowser);
     }
 
     @Override public boolean onCreateOptionsMenu(Menu menu) {
@@ -144,11 +172,14 @@ public class MainPageActivity extends AppCompatActivity {
     }
 
     public void generate(){
-        Bitmap bitmap =null;
+        Bitmap bitmap = null;
+        Bitmap bitmap1 = null;
         try
         {
-            bitmap = CreateImage(firebaseAuth.getUid());
+            bitmap = CreateImage(firebaseAuth.getUid(),"QR Code");
+            bitmap1 = CreateImage(firebaseAuth.getUid(),"Barcode");
             myBitmap = bitmap;
+            myBarCode = bitmap1;
         }
         catch (WriterException we)
         {
@@ -156,6 +187,7 @@ public class MainPageActivity extends AppCompatActivity {
         }
         if (bitmap != null)
         {
+            saveBitmap(myBarCode, barcorde, ".jpg");
             saveBitmap(myBitmap, barcorde, ".jpg");
             LayoutInflater layoutInflater = LayoutInflater.from(MainPageActivity.this);
             View view = layoutInflater.inflate(R.layout.success_dialog, null);
@@ -167,6 +199,9 @@ public class MainPageActivity extends AppCompatActivity {
             success_text.setText(roles + " ID: "+ barcorde + "\n" + time);
             success_imageview = (ImageView) view.findViewById(R.id.success_imageview);
             success_imageview.setImageBitmap(myBitmap);
+            barcode_iv= (ImageView) view.findViewById(R.id.success_imageview2);
+            barcode_iv.setImageBitmap(myBarCode);
+
             builder.setPositiveButton("Done", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
@@ -255,12 +290,21 @@ public class MainPageActivity extends AppCompatActivity {
 
     }
 
-    public Bitmap CreateImage(String message) throws WriterException
+    public Bitmap CreateImage(String message,String type) throws WriterException
     {
+        BitMatrix bitMatrix = null;
 
-        BitMatrix bitMatrix =  new MultiFormatWriter().encode(message, BarcodeFormat.QR_CODE, size_width
-                , size_height);
-
+        switch (type) {
+            case "QR Code":
+                bitMatrix =
+                        new MultiFormatWriter().encode(message, BarcodeFormat.QR_CODE, size, size);
+                break;
+            case "Barcode":
+                bitMatrix = new MultiFormatWriter()
+                        .encode(message, BarcodeFormat.CODE_128, size_width, size_height);
+                break;
+            default: bitMatrix = new MultiFormatWriter().encode(message, BarcodeFormat.QR_CODE, size, size);break;
+        }
         int width = bitMatrix.getWidth();
         int height = bitMatrix.getHeight();
         int [] pixels = new int [width * height];
@@ -300,6 +344,16 @@ public class MainPageActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void openSurvey() {
+        Intent intent = new Intent(this, SurveyActivity.class);
+        startActivity(intent);
+    }
+
+    public void openSurveyInsight() {
+        Intent intent = new Intent(this, SurveyInsightActivity.class);
+        startActivity(intent);
+    }
+
     public void updateUser(){
         DocumentReference df = firestore.collection("user").document(firebaseUser.getUid());
         df.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
@@ -310,16 +364,19 @@ public class MainPageActivity extends AppCompatActivity {
                     String lastName = documentSnapshot.getString("userLastName");
                     String ic = documentSnapshot.getString("userBarcode");
                     String email = documentSnapshot.getString("userEmail");
+                    String img = documentSnapshot.getString("userProfileUri");
                     roles = documentSnapshot.getString("userAffiliation");
                     barcorde = documentSnapshot.getString("userBarcode");
+
+                    if(!img.isEmpty()){
+                        Picasso.get().load(img).into(imgUser);
+                    }
 
                     txtName.setText(firstName + " " + lastName);
                     txtRole.setText(roles);
                     txtId.setText(ic);
                     txtEmail.setText(email);
                 }
-
-
             }
         });
 
