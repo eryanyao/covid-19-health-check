@@ -24,14 +24,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.example.g3.covid.CovidActivity;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.UserInfo;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -45,7 +41,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -55,7 +50,7 @@ public class MainPageActivity extends AppCompatActivity {
     ImageView success_imageview,barcode_iv;
     Button btnBar,btnSurvey,btnCovid,btnSettings,btnLogout, btnSurveyInsight;
 
-    TextView txtName,txtId,txtRole,txtEmail,success_text;
+    TextView txtName,txtId,txtRole,txtStatus,success_text;
     CircleImageView imgUser;
 
     FirebaseAuth firebaseAuth;
@@ -83,9 +78,9 @@ public class MainPageActivity extends AppCompatActivity {
         firestore = FirebaseFirestore.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
 
-        txtEmail = findViewById(R.id.txtUserEmail);
-        txtName = findViewById(R.id.txtUserName);
         txtId = findViewById(R.id.txtUserId);
+        txtName = findViewById(R.id.txtUserName);
+        txtStatus = findViewById(R.id.txtStatus);
         txtRole = findViewById(R.id.txtUserRoles);
         imgUser = findViewById(R.id.imgUsr);
         btnBar = findViewById(R.id.btnUserBar);
@@ -365,6 +360,7 @@ public class MainPageActivity extends AppCompatActivity {
                     String ic = documentSnapshot.getString("userBarcode");
                     String email = documentSnapshot.getString("userEmail");
                     String img = documentSnapshot.getString("userProfileUri");
+                    String status = documentSnapshot.getString("userStatus");
                     roles = documentSnapshot.getString("userAffiliation");
                     barcorde = documentSnapshot.getString("userBarcode");
 
@@ -372,10 +368,14 @@ public class MainPageActivity extends AppCompatActivity {
                         Picasso.get().load(img).into(imgUser);
                     }
 
+                    if(status.equals("Safe")){
+                        txtStatus.setText("Safe");
+                    }
+
                     txtName.setText(firstName + " " + lastName);
                     txtRole.setText(roles);
                     txtId.setText(ic);
-                    txtEmail.setText(email);
+
                 }
             }
         });

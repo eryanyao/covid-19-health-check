@@ -20,6 +20,18 @@
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
 
+
+    <string name="safe">You are unlikely to have coronavirus</string>
+    <string name="safe_desc">If you develop any of these symptomes, report them on this app
+    and book a free test. Only get a test if you have coranavirus symptoms.</string>
+    <string name="safe_info">For further advice, please contact:</string>
+    <string name="danger">You may have coronavirus</string>
+    <string name="danger_desc">Your symptoms suggest you may have coronavirus. Please
+        isolate yourself and anyone else in your household. That means staying at home with
+    no visitors. You should also book a free test immediately. If you are under 18, you are
+    advised to show this message to a trusted adult.</string>
+    <string name="danger_info">Please stay at home to keep yourself and others safe.</string>
+
     <string name="high_temperature_desc">
         This means that you feel hot to touch on your chest or back - you dont need to measure your temparature with a themometer.
     </string>
@@ -31,4 +43,5 @@
     <string name="change_taste_desc">
         This means you have noticed that you cannot smell or taste anything, or that things smell or taste different to normal.
     </string>
+
 </resources>
