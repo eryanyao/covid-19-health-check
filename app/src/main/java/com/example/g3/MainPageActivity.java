@@ -165,7 +165,7 @@ public class MainPageActivity extends AppCompatActivity {
     }
 
     public void personnal(){
-        Intent intent = new Intent(this, HealthStatusActivity.class);
+        Intent intent = new Intent(MainPageActivity.this, HealthStatusActivity.class);
         startActivity(intent);
     }
 
