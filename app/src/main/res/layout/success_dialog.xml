@@ -3,35 +3,50 @@
     android:layout_width="match_parent" android:layout_height="match_parent">
 
     <android.widget.ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/success_scrollview"
-        android:layout_marginTop="25dp"
+        android:layout_width="386dp"
+        android:layout_height="400dp"
         android:layout_marginLeft="25dp"
+        android:layout_marginTop="25dp"
         android:layout_marginRight="25dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="400dp">
 
-            <TextView
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="PLACEHOLDER"
-                android:id="@+id/success_text" />
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
+                <TextView
+                    android:id="@+id/success_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="PLACEHOLDER" />
 
+                <ImageView
+                    android:id="@+id/success_imageview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="25dp"
+                    android:layout_marginBottom="10dp" />
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/success_imageview"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
-                android:layout_marginTop="25dp"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@id/success_text" />
-
+                <ImageView
+                    android:id="@+id/success_imageview2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="10dp" />
+            </LinearLayout>
         </RelativeLayout>
 
     </android.widget.ScrollView>
