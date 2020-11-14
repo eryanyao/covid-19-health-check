@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.g3">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,7 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.G3">
-        <activity android:name=".SettingsActivity" />
+        <activity android:name=".settings.EditProfileActivity"
+            android:parentActivityName=".SettingsActivity"></activity>
+        <activity android:name=".SettingsActivity"
+            android:parentActivityName=".MainPageActivity"></activity>
         <activity android:name=".MainPageActivity" />
         <activity android:name=".LoginOuterActivity" />
         <activity android:name=".SurveyActivity" />
@@ -22,13 +28,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".covid.CovidActivity" android:parentActivityName=".MainPageActivity">
-        </activity>
-        <activity android:name=".covid.AffectedCountries"></activity>
-        <activity android:name=".covid.DetailActivity"></activity>
+        
+        <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"/>
+        
+        <activity
+            android:name=".covid.CovidActivity"
+            android:parentActivityName=".MainPageActivity"></activity>
+        <activity android:name=".covid.AffectedCountries" />
+        <activity android:name=".covid.DetailActivity" />
     </application>
-
-
 
 </manifest>

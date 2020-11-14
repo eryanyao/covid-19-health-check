@@ -39,6 +39,7 @@ import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
+import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -47,10 +48,13 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class MainPageActivity extends AppCompatActivity {
-    ImageView imgUser,success_imageview,barcode_iv;
+    ImageView success_imageview,barcode_iv;
     Button btnBar,btnSurvey,btnCovid,btnSettings,btnLogout;
     TextView txtName,txtId,txtRole,txtEmail,success_text;
+    CircleImageView imgUser;
 
     FirebaseAuth firebaseAuth;
     FirebaseFirestore firestore;
@@ -90,9 +94,7 @@ public class MainPageActivity extends AppCompatActivity {
 
         updateUser();
 
-            Glide.with(this)
-                    .load(firebaseUser.getPhotoUrl())
-                    .into(imgUser);
+
 
 
         btnBar.setOnClickListener(new View.OnClickListener() {
@@ -333,8 +335,13 @@ public class MainPageActivity extends AppCompatActivity {
                     String lastName = documentSnapshot.getString("userLastName");
                     String ic = documentSnapshot.getString("userBarcode");
                     String email = documentSnapshot.getString("userEmail");
+                    String img = documentSnapshot.getString("userProfileUri");
                     roles = documentSnapshot.getString("userAffiliation");
                     barcorde = documentSnapshot.getString("userBarcode");
+
+                    if(!img.isEmpty()){
+                        Picasso.get().load(img).into(imgUser);
+                    }
 
                     txtName.setText(firstName + " " + lastName);
                     txtRole.setText(roles);
