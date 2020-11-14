@@ -7,19 +7,18 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-public class SurveyActivity extends AppCompatActivity {
+public class SurveyInsightActivity extends AppCompatActivity {
 
     private WebView webView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_survey);
+        setContentView(R.layout.activity_survey_insight);
 
-        webView = (WebView) findViewById(R.id.mWebView);
+        webView = (WebView) findViewById(R.id.mSurveyResultWebView);
         webView.setWebViewClient(new WebViewClient());
-        webView.loadUrl("https://forms.office.com/Pages/ResponsePage.aspx?id=4tZeri9oNkSj0tBxhvLB2iBKZKHFr79KjmxF1C9qLrpUNjJKNUc1S1pQUTRQNkRWWEtPM0pHS0RVQi4u");
-
+        webView.loadUrl("https://app.powerbi.com/reportEmbed?reportId=3c155143-d316-41c9-9a9f-e08377412f39&autoAuth=true&ctid=ae5ed6e2-682f-4436-a3d2-d07186f2c1da&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLXNvdXRoLWVhc3QtYXNpYS1yZWRpcmVjdC5hbmFseXNpcy53aW5kb3dzLm5ldC8ifQ%3D%3D");
 
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);

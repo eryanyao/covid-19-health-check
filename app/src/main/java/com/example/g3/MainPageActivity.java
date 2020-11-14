@@ -51,8 +51,10 @@ import java.util.Calendar;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainPageActivity extends AppCompatActivity {
+
     ImageView success_imageview,barcode_iv;
-    Button btnBar,btnSurvey,btnCovid,btnSettings,btnLogout;
+    Button btnBar,btnSurvey,btnCovid,btnSettings,btnLogout, btnSurveyInsight;
+
     TextView txtName,txtId,txtRole,txtEmail,success_text;
     CircleImageView imgUser;
 
@@ -91,6 +93,7 @@ public class MainPageActivity extends AppCompatActivity {
         btnSettings = findViewById(R.id.btnSettings);
         btnCovid = findViewById(R.id.btnCovid);
         btnSurvey = findViewById(R.id.btnSurvey);
+        btnSurveyInsight = findViewById(R.id.btnSurveyInsight);
 
         updateUser();
 
@@ -123,7 +126,23 @@ public class MainPageActivity extends AppCompatActivity {
 
         btnSurvey.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View view) {
-                goToUrl("https://forms.office.com/Pages/ResponsePage.aspx?id=4tZeri9oNkSj0tBxhvLB2iBKZKHFr79KjmxF1C9qLrpUNjJKNUc1S1pQUTRQNkRWWEtPM0pHS0RVQi4u");
+
+                openSurvey();
+            }
+        });
+
+//        btnSurveyInsight.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                openSurveyInsight();
+//            }
+//        });
+        btnSurveyInsight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse("https://app.powerbi.com/reportEmbed?reportId=3c155143-d316-41c9-9a9f-e08377412f39&autoAuth=true&ctid=ae5ed6e2-682f-4436-a3d2-d07186f2c1da&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLXNvdXRoLWVhc3QtYXNpYS1yZWRpcmVjdC5hbmFseXNpcy53aW5kb3dzLm5ldC8ifQ%3D%3D");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
             }
         });
     }
@@ -322,6 +341,16 @@ public class MainPageActivity extends AppCompatActivity {
 
     public void covid(){
         Intent intent = new Intent(this, CovidActivity.class);
+        startActivity(intent);
+    }
+
+    public void openSurvey() {
+        Intent intent = new Intent(this, SurveyActivity.class);
+        startActivity(intent);
+    }
+
+    public void openSurveyInsight() {
+        Intent intent = new Intent(this, SurveyInsightActivity.class);
         startActivity(intent);
     }
 

@@ -174,7 +174,13 @@
                     android:id="@+id/btnSurvey"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Survey" />
+                    android:text="Daily Health Survey" />
+
+                <Button
+                    android:id="@+id/btnSurveyInsight"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="INTI Survey Insight" />
 
                 <Button
                     android:id="@+id/btnSettings"
