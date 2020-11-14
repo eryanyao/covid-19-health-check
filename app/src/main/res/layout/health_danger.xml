@@ -67,14 +67,6 @@
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/textView6"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@string/danger_info"
-            android:textSize="18sp" />
-
-        <TextView
             android:id="@+id/textView7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -83,16 +75,17 @@
             android:textSize="18sp" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btnDangerHelp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Malaysia Covid-19 Helpline"
             android:textAllCaps="false" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/btnDangerHome"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="Back to Home" />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

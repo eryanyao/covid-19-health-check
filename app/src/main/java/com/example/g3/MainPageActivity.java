@@ -10,6 +10,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -25,6 +26,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.g3.covid.CovidActivity;
+import com.example.g3.survey.HealthStatusActivity;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -48,7 +50,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class MainPageActivity extends AppCompatActivity {
 
     ImageView success_imageview,barcode_iv;
-    Button btnBar,btnSurvey,btnCovid,btnSettings,btnLogout, btnSurveyInsight;
+    Button btnBar,btnSurvey,btnCovid,btnSettings,btnLogout, btnSurveyInsight, btnPersonnal;
 
     TextView txtName,txtId,txtRole,txtStatus,success_text;
     CircleImageView imgUser;
@@ -82,18 +84,26 @@ public class MainPageActivity extends AppCompatActivity {
         txtName = findViewById(R.id.txtUserName);
         txtStatus = findViewById(R.id.txtStatus);
         txtRole = findViewById(R.id.txtUserRoles);
+
         imgUser = findViewById(R.id.imgUsr);
+
         btnBar = findViewById(R.id.btnUserBar);
         btnLogout = findViewById(R.id.btnLogout);
         btnSettings = findViewById(R.id.btnSettings);
         btnCovid = findViewById(R.id.btnCovid);
         btnSurvey = findViewById(R.id.btnSurvey);
         btnSurveyInsight = findViewById(R.id.btnSurveyInsight);
+        btnPersonnal = findViewById(R.id.btnPersonnal);
 
         updateUser();
 
 
 
+        btnPersonnal.setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View view) {
+                personnal();
+            }
+        });
 
         btnBar.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View view) {
@@ -126,12 +136,6 @@ public class MainPageActivity extends AppCompatActivity {
             }
         });
 
-//        btnSurveyInsight.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                openSurveyInsight();
-//            }
-//        });
         btnSurveyInsight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -140,12 +144,6 @@ public class MainPageActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-    }
-
-    private void goToUrl (String url) {
-        Uri uriUrl = Uri.parse(url);
-        Intent launchBrowser = new Intent(Intent.ACTION_VIEW, uriUrl);
-        startActivity(launchBrowser);
     }
 
     @Override public boolean onCreateOptionsMenu(Menu menu) {
@@ -164,6 +162,11 @@ public class MainPageActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    public void personnal(){
+        Intent intent = new Intent(MainPageActivity.this, HealthStatusActivity.class);
+        startActivity(intent);
     }
 
     public void generate(){
@@ -370,6 +373,12 @@ public class MainPageActivity extends AppCompatActivity {
 
                     if(status.equals("Safe")){
                         txtStatus.setText("Safe");
+                        txtStatus.setTextColor(Color.GREEN);
+                    }
+                    else if(status.equals("Danger")){
+                        txtStatus.setText("Danger");
+                        txtStatus.setTextColor(Color.RED);
+
                     }
 
                     txtName.setText(firstName + " " + lastName);
