@@ -1,9 +1,13 @@
 package com.example.g3.survey;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -29,10 +33,7 @@ public class SafeActivity extends AppCompatActivity {
 
         btnHelp.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View view) {
-                String phno="+60388810200";
-                Intent callIntent = new Intent(Intent.ACTION_DIAL,Uri.parse(phno));
-
-                startActivity(callIntent);
+                callPhoneNumber();
             }
         });
     }
@@ -40,5 +41,49 @@ public class SafeActivity extends AppCompatActivity {
     public void home(){
         Intent intent = new Intent(this, MainPageActivity.class);
         startActivity(intent);
+    }
+
+    public void callPhoneNumber()
+    {
+        try
+        {
+            if(Build.VERSION.SDK_INT > 22)
+            {
+                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                    // TODO: Consider calling
+
+                    ActivityCompat.requestPermissions(SafeActivity.this, new String[]{Manifest.permission.CALL_PHONE}, 101);
+
+                    return;
+                }
+
+                Intent callIntent = new Intent(Intent.ACTION_CALL);
+                callIntent.setData(Uri.parse("tel:" + "+60388810200"));
+                startActivity(callIntent);
+
+            }
+            else {
+                Intent callIntent = new Intent(Intent.ACTION_CALL);
+                callIntent.setData(Uri.parse("tel:" + "+60388810200"));
+                startActivity(callIntent);
+            }
+        }
+        catch (Exception ex)
+        {
+            ex.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                                           int[] grantResults)
+    {
+        if(requestCode == 101)
+        {
+            if(grantResults[0] == PackageManager.PERMISSION_GRANTED)
+            {
+                callPhoneNumber();
+            }
+        }
     }
 }
