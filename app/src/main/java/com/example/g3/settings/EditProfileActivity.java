@@ -127,7 +127,7 @@ public class EditProfileActivity extends AppCompatActivity {
     private void uploadProfileImage(){
         final ProgressDialog pd = new ProgressDialog(this);
         pd.setTitle("Set your profile picture");
-        pd.setMessage("Please wait, while we are setting your data");
+        pd.setMessage("Please wait while saving your data");
         pd.show();
 
         if(imgUri !=null){

@@ -31,23 +31,22 @@ public class ResetPasswordActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
 
         btnReset = findViewById(R.id.btnReset);
-        btnBack = findViewById(R.id.btnBack);
         txtStudent = findViewById(R.id.txtResetStudent);
 
         btnReset.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View view) {
                 String student = txtStudent.getText().toString().trim();
                 if(student.isEmpty()){
-                    Toast.makeText(getApplicationContext(),"Please enter your student ID.",
+                    Toast.makeText(getApplicationContext(),"Please enter your student ID",
                             Toast.LENGTH_SHORT).show();
-                    txtStudent.setError("Field Required.");
+                    txtStudent.setError("Field Required");
 
                 }
                 else{
                     String email = txtStudent.getText() + "@student.newinti.edu.my";
 
-                    pd.setTitle("Sending reset password email");
-                    pd.setMessage("wait a moment...");
+                    pd.setTitle("Sending email to your email address for reset password");
+                    pd.setMessage("wait a moment..");
                     pd.show();
 
                     firebaseAuth.sendPasswordResetEmail(email).addOnCompleteListener(
@@ -62,20 +61,14 @@ public class ResetPasswordActivity extends AppCompatActivity {
                                     else{
                                         pd.dismiss();
                                         Toast.makeText(ResetPasswordActivity.this,"Failed to send" +
-                                                        " the reset password email. Please try  " +
-                                                        "later.",
+                                                        " the email for reset password. Please try again " +
+                                                        "later",
                                                 Toast.LENGTH_SHORT).show();
                                     }
                                     pd.dismiss();
                                 }
                             });
                 }
-            }
-        });
-
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override public void onClick(View view) {
-                login();
             }
         });
 
