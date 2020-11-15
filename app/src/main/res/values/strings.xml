@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">G3</string>
+    <string name="app_name">INTI Medicine</string>
     <string name="survey_desc">Our goal is to learn and predict which geo</string>
     <string name="inti_med">INTI Medicine</string>
     <string name="action_settings">Settings</string>
@@ -33,7 +33,7 @@
     <string name="danger_info">Please stay at home to keep yourself and others safe.</string>
 
     <string name="high_temperature_desc">
-        This means that you feel hot to touch on your chest or back - you dont need to measure your temparature with a themometer.
+        This means that you feel hot to touch on your chest or back - you don\'t need to measure your temparature with a thermometer.
     </string>
 
     <string name="continuous_cough_desc">

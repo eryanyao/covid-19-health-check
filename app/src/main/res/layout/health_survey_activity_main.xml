@@ -13,7 +13,8 @@
         android:id="@+id/linearView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginBottom="10dp">
 
         <TextView
             android:id="@+id/textView4"
@@ -22,7 +23,7 @@
             android:layout_weight="1"
             android:text="Select as many of the symptoms as apply to you"
             android:textSize="24sp"
-            android:textStyle="bold" />
+            android:fontFamily="@font/airbnb_cereal_bold" />
 
         <TextView
             android:id="@+id/textView5"
@@ -30,7 +31,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_weight="1"
-            android:text="If you don't have any of these symptoms, there's no need for you to do anything right now. If you develop any of these symptoms, check them on this app and book a free test immediately." />
+            android:text="If you don't have any of these symptoms, there's no need for you to do anything right now. If you develop any of these symptoms, check them on this app and book a free test immediately."
+            android:fontFamily="@font/airbnb_cereal_book"
+            android:textSize="15dp"
+            />
     </LinearLayout>
 
     <ScrollView
@@ -63,7 +67,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
-                        android:text="A high temperature (fever)" />
+                        android:text="A high temperature (fever)"
+                        android:buttonTint="@color/recovered"
+                        android:fontFamily="@font/airbnb_cereal_medium"/>
 
                     <TextView
                         android:id="@+id/textView6"
@@ -98,7 +104,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
-                        android:text="A new continuous cough" />
+                        android:text="A new continuous cough"
+                        android:buttonTint="@color/recovered"
+                        android:fontFamily="@font/airbnb_cereal_medium"/>
 
                     <TextView
                         android:id="@+id/textView7"
@@ -118,6 +126,7 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="5dp"
+                android:layout_marginBottom="10dp"
                 android:padding="10dp"
                 app:cardCornerRadius="5dp"
                 app:cardElevation="10dp">
@@ -133,7 +142,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
-                        android:text="A change to your sense of smell or taste" />
+                        android:buttonTint="@color/recovered"
+                        android:text="A change to your sense of smell or taste"
+                        android:fontFamily="@font/airbnb_cereal_medium"/>
 
                     <TextView
                         android:id="@+id/textView8"
@@ -150,21 +161,28 @@
 
     <Button
         android:id="@+id/btnContinues"
+        style="@style/Widget.AppCompat.Button"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="15dp"
         android:text="Continues"
-        android:textSize="14sp"
-        android:textStyle="bold" />
+        android:textAllCaps="false"
+        android:layout_marginRight="50dp"
+        android:layout_marginLeft="50dp"
+        android:textSize="18sp"
+        android:textColor="@android:color/white"
+        android:fontFamily="@font/airbnb_cereal_medium"
+        android:background="@drawable/main_page_button_bg"/>
 
     <Button
         android:id="@+id/btnDontHave"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="I dont have any of this symptoms"
+        android:text="I dont have any of these symptoms"
+        android:textAllCaps="false"
+        android:fontFamily="@font/airbnb_cereal_medium"
         android:textColor="#03A9F4"
-        android:textSize="12sp"
-        android:textStyle="bold" />
+        android:textSize="15sp" />
 
 </LinearLayout>
