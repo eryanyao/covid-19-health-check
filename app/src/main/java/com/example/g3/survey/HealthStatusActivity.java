@@ -21,8 +21,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class HealthStatusActivity  extends AppCompatActivity {
-    CheckBox cbTemperature,cbContinuousCough,cbTaste;
+public class HealthStatusActivity extends AppCompatActivity {
+    CheckBox cbTemperature, cbContinuousCough, cbTaste;
     Button btnConfirm, btnDont;
 
     FirebaseFirestore firestore;
@@ -44,17 +44,15 @@ public class HealthStatusActivity  extends AppCompatActivity {
         btnDont = findViewById(R.id.btnDontHave);
 
         btnConfirm.setOnClickListener(new View.OnClickListener() {
-            @Override public void onClick(View view) {
-                if(!(cbContinuousCough.isChecked()||cbTaste.isChecked()||cbTemperature.isChecked())){
-                    Toast.makeText(HealthStatusActivity.this,"Please select the symptoms. Else " +
-                            "click the button " +
-                            "below" +
-                            ".",Toast.LENGTH_SHORT).show();
-                }
-                else{
+            @Override
+            public void onClick(View view) {
+                if (!(cbContinuousCough.isChecked() || cbTaste.isChecked() || cbTemperature.isChecked())) {
+                    Toast.makeText(HealthStatusActivity.this, "Please select symptom if any. Otherwise, click the button at the bottom" +
+                            ".", Toast.LENGTH_SHORT).show();
+                } else {
                     AlertDialog.Builder builder = new AlertDialog.Builder(HealthStatusActivity.this);
-                    builder.setTitle("Confirm you choose on any symptoms");
-                    builder.setMessage("Any selected symptoms will be key in.");
+                    builder.setTitle("Confirm the symptom(s) you have selected");
+                    builder.setMessage("Any selected symptom(s) will be saved.");
                     builder.setPositiveButton(
                             "Cancel",
                             new DialogInterface.OnClickListener() {
@@ -65,29 +63,29 @@ public class HealthStatusActivity  extends AppCompatActivity {
                     builder.setNegativeButton(
                             "Confirm",
                             new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id)
-                                {
+                                public void onClick(DialogInterface dialog, int id) {
                                     final ProgressDialog pd =
                                             new ProgressDialog(HealthStatusActivity.this);
                                     pd.setTitle("Update Status");
-                                    pd.setMessage("Please wait, while we are setting your data");
+                                    pd.setMessage("Please wait while saving your data");
                                     pd.show();
 
                                     firestore.collection("user").document(firebaseAuth.getCurrentUser().getUid())
-                                            .update("userStatus","Danger").addOnCompleteListener(
+                                            .update("userStatus", "Danger").addOnCompleteListener(
                                             new OnCompleteListener<Void>() {
                                                 @Override
                                                 public void onComplete(@NonNull Task<Void> task) {
-                                                    Toast.makeText(HealthStatusActivity.this,"Health " +
+                                                    Toast.makeText(HealthStatusActivity.this, "Health " +
                                                             "status update " +
-                                                            "successfully.",Toast.LENGTH_SHORT).show();
+                                                            "successfully.", Toast.LENGTH_SHORT).show();
                                                     pd.dismiss();
                                                     danger();
 
                                                 }
                                             }).addOnFailureListener(new OnFailureListener() {
-                                        @Override public void onFailure(@NonNull Exception e) {
-                                            Toast.makeText(HealthStatusActivity.this,"Health " +
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Toast.makeText(HealthStatusActivity.this, "Health " +
                                                             "status update " +
                                                             "unsuccessfully.\nPlease try again.",
                                                     Toast.LENGTH_SHORT).show();
@@ -102,7 +100,8 @@ public class HealthStatusActivity  extends AppCompatActivity {
         });
 
         btnDont.setOnClickListener(new View.OnClickListener() {
-            @Override public void onClick(View view) {
+            @Override
+            public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(HealthStatusActivity.this);
                 builder.setTitle("Confirm you do not have any symptoms");
                 builder.setMessage("Any selected symptoms will be unselected.");
@@ -116,30 +115,30 @@ public class HealthStatusActivity  extends AppCompatActivity {
                 builder.setNegativeButton(
                         "Confirm",
                         new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id)
-                            {
+                            public void onClick(DialogInterface dialog, int id) {
                                 final ProgressDialog pd =
                                         new ProgressDialog(HealthStatusActivity.this);
                                 pd.setTitle("Update Status");
-                                pd.setMessage("Please wait, while we are setting your data");
+                                pd.setMessage("Please wait while saving your data");
                                 pd.show();
 
                                 firestore.collection("user").document(firebaseAuth.getCurrentUser().getUid())
-                                        .update("userStatus","Safe").addOnCompleteListener(
+                                        .update("userStatus", "Safe").addOnCompleteListener(
                                         new OnCompleteListener<Void>() {
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {
-                                                Toast.makeText(HealthStatusActivity.this,"Health " +
+                                                Toast.makeText(HealthStatusActivity.this, "Health " +
                                                         "status update " +
-                                                        "successfully.",Toast.LENGTH_SHORT).show();
+                                                        "successfully.", Toast.LENGTH_SHORT).show();
                                                 pd.dismiss();
                                                 safe();
                                             }
                                         }).addOnFailureListener(new OnFailureListener() {
-                                    @Override public void onFailure(@NonNull Exception e) {
-                                        Toast.makeText(HealthStatusActivity.this,"Health " +
-                                                "status update " +
-                                                "unsuccessfully.\nPlease try again.",
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Toast.makeText(HealthStatusActivity.this, "Health " +
+                                                        "status update " +
+                                                        "unsuccessfully.\nPlease try again.",
                                                 Toast.LENGTH_SHORT).show();
                                         pd.dismiss();
                                     }
@@ -154,13 +153,12 @@ public class HealthStatusActivity  extends AppCompatActivity {
     }
 
 
-
-    public void danger(){
+    public void danger() {
         Intent intent = new Intent(this, DangerActivity.class);
         startActivity(intent);
     }
 
-    public void safe(){
+    public void safe() {
         Intent intent = new Intent(this, SafeActivity.class);
         startActivity(intent);
     }
