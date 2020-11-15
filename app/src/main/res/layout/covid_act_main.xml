@@ -55,7 +55,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingLeft="10dp"
-                        android:text="Total Cases" />
+                        android:text="Total Cases"
+                        android:textSize="14dp"
+                        android:fontFamily="@font/airbnb_cereal_medium"/>
 
                 </LinearLayout>
 
@@ -74,7 +76,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingLeft="10dp"
-                        android:text="Recovered" />
+                        android:text="Recovered"
+                        android:textSize="14dp"
+                        android:fontFamily="@font/airbnb_cereal_medium"/>
 
                 </LinearLayout>
 
@@ -93,7 +97,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingLeft="10dp"
-                        android:text="Deaths" />
+                        android:text="Deaths"
+                        android:textSize="14dp"
+                        android:fontFamily="@font/airbnb_cereal_medium"/>
 
                 </LinearLayout>
 
@@ -112,7 +118,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingLeft="10dp"
-                        android:text="Active" />
+                        android:text="Active"
+                        android:textSize="14dp"
+                        android:fontFamily="@font/airbnb_cereal_medium"/>
 
                 </LinearLayout>
             </LinearLayout>
@@ -188,7 +196,8 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/airbnb_cereal_bold"
                             android:text="Cases"
-                            android:textSize="18sp" />
+                            android:textSize="18sp"
+                            />
 
                         <TextView
                             android:id="@+id/tvCases"
