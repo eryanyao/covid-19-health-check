@@ -47,7 +47,7 @@ public class HealthStatusActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (!(cbContinuousCough.isChecked() || cbTaste.isChecked() || cbTemperature.isChecked())) {
-                    Toast.makeText(HealthStatusActivity.this, "Please select symptom if any. Otherwise, click the button at the bottom" +
+                    Toast.makeText(HealthStatusActivity.this, "Please select symptom(s) if any. Otherwise, click the button at the bottom" +
                             ".", Toast.LENGTH_SHORT).show();
                 } else {
                     AlertDialog.Builder builder = new AlertDialog.Builder(HealthStatusActivity.this);
@@ -76,8 +76,8 @@ public class HealthStatusActivity extends AppCompatActivity {
                                                 @Override
                                                 public void onComplete(@NonNull Task<Void> task) {
                                                     Toast.makeText(HealthStatusActivity.this, "Health " +
-                                                            "status update " +
-                                                            "successfully.", Toast.LENGTH_SHORT).show();
+                                                            "status has updated " +
+                                                            "successfully", Toast.LENGTH_SHORT).show();
                                                     pd.dismiss();
                                                     danger();
 
@@ -87,7 +87,7 @@ public class HealthStatusActivity extends AppCompatActivity {
                                         public void onFailure(@NonNull Exception e) {
                                             Toast.makeText(HealthStatusActivity.this, "Health " +
                                                             "status update " +
-                                                            "unsuccessfully.\nPlease try again.",
+                                                            "unsuccessfully.\nPlease try again",
                                                     Toast.LENGTH_SHORT).show();
                                             pd.dismiss();
                                         }
@@ -138,7 +138,7 @@ public class HealthStatusActivity extends AppCompatActivity {
                                     public void onFailure(@NonNull Exception e) {
                                         Toast.makeText(HealthStatusActivity.this, "Health " +
                                                         "status update " +
-                                                        "unsuccessfully.\nPlease try again.",
+                                                        "unsuccessfully.\nPlease try again",
                                                 Toast.LENGTH_SHORT).show();
                                         pd.dismiss();
                                     }

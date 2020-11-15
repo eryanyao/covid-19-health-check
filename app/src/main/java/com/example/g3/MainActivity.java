@@ -34,16 +34,11 @@ public class MainActivity extends AppCompatActivity {
                 FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
 
                 if (firebaseUser != null) {
-                    Toast.makeText(MainActivity.this,
-                            "Login Sucessfully.\nWelcome Back\n"
-                                    + firebaseUser.getEmail()
-                            ,
-                            Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(MainActivity.this, MainPageActivity.class);
                     startActivity(intent);
 
                 } else {
-                    Toast.makeText(MainActivity.this, "Please Login.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Welcome to INTI Medicine", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(MainActivity.this, LoginOuterActivity.class);
                     startActivity(intent);
                 }

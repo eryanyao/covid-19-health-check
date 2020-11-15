@@ -26,8 +26,8 @@
         <activity android:name=".MainPageActivity" />
         <activity android:name=".LoginOuterActivity" />
         <activity android:name=".SurveyActivity" android:parentActivityName=".MainPageActivity" />
-        <activity android:name=".ResetPasswordActivity" />
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".ResetPasswordActivity" android:parentActivityName=".LoginActivity"/>
+        <activity android:name=".LoginActivity" android:parentActivityName=".LoginOuterActivity"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

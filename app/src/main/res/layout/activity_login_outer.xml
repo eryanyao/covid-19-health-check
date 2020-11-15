@@ -6,20 +6,65 @@
     android:layout_height="match_parent"
     tools:context=".LoginOuterActivity">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="294dp"
-        android:layout_height="31dp"
-        android:text="TAKE YOUR DAILY HEALTH CHECK "
-        android:textSize="18sp"
-        tools:layout_editor_absoluteX="58dp"
-        tools:layout_editor_absoluteY="121dp" />
+    <View
+        android:id="@+id/view3"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:alpha="0.4"
+        android:background="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btnThroughLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Log in with your student ID"
-        tools:layout_editor_absoluteX="73dp"
-        tools:layout_editor_absoluteY="232dp" />
+    <View
+        android:id="@+id/view4"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:alpha="0.4"
+        android:background="@drawable/iu_campus"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginLeft="40dp"
+            app:srcCompat="@drawable/inti_main_logo"
+            android:layout_marginBottom="40dp"/>
+
+        <Button
+            android:id="@+id/btnThroughLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Click here to login"
+            android:textAllCaps="false"
+            android:fontFamily="@font/airbnb_cereal_medium"
+            android:layout_marginBottom="30dp"
+            />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Beta version 1.1"
+            android:textAllCaps="false"
+            android:textSize="15dp"
+            android:textAlignment="center"
+            android:fontFamily="@font/airbnb_cereal_medium"
+            android:textColor="@color/color_one"
+            />
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
