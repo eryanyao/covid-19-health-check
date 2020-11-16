@@ -33,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
         pd = new ProgressDialog(this);
         firebaseAuth = FirebaseAuth.getInstance();
 
-        txtPassword = findViewById(R.id.txtPassword);
+        txtPassword = findViewById(R.id.txtCurrentPassword);
         txtStudent = findViewById(R.id.txtStudent);
         btnForgot = findViewById(R.id.btnForgot);
         btnLogin = findViewById(R.id.btnLogin);

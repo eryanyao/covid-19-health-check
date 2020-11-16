@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.g3.settings.ChangePassActivity;
 import com.example.g3.settings.EditProfileActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -26,7 +27,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 public class SettingsActivity extends AppCompatActivity {
-    Button btnImg;
+    Button btnImg, btnPass;
 
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
@@ -46,6 +47,14 @@ public class SettingsActivity extends AppCompatActivity {
         firebaseUser = firebaseAuth.getCurrentUser();
 
         btnImg = findViewById(R.id.btnChangeImg);
+        btnPass = findViewById(R.id.btnChangePsw);
+
+        btnPass.setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View view) {
+                Intent intent = new Intent(SettingsActivity.this, ChangePassActivity.class);
+                startActivity(intent);
+            }
+        });
 
         btnImg.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View view) {
