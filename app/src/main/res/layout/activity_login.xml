@@ -6,50 +6,90 @@
     android:layout_height="match_parent"
     tools:context=".LoginActivity">
 
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:alpha="0.4"
+        android:background="@drawable/iu_campus"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:alpha="0.4"
+        android:background="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <LinearLayout
-        android:layout_width="370dp"
-        android:layout_height="358dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="70dp"
+        android:layout_marginEnd="70dp"
         android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="159dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:orientation="horizontal" />
+        app:layout_constraintTop_toTopOf="parent">
 
         <EditText
             android:id="@+id/txtStudent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Student ID"
-            android:inputType="textPersonName" />
+            android:padding="12dp"
+            android:textSize="15sp"
+            android:hint="INTI Student ID"
+            android:textColor="@color/color_one"
+            android:textColorHint="@color/color_one"
+            android:inputType="textPersonName"
+            android:background="@drawable/btn_round_border"
+            android:fontFamily="@font/airbnb_cereal_medium"/>
 
         <EditText
             android:id="@+id/txtCurrentPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:padding="12dp"
+            android:layout_marginTop="16dp"
+            android:textSize="15sp"
             android:hint="Password"
-            android:inputType="textPassword" />
+            android:textColor="@color/color_one"
+            android:textColorHint="@color/color_one"
+            android:inputType="textPassword"
+            android:background="@drawable/btn_round_border"
+            android:fontFamily="@font/airbnb_cereal_medium"/>
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:text="Login"
+            android:background="@drawable/main_page_button_bg"
+            android:textSize="15sp"
+            android:fontFamily="@font/airbnb_cereal_medium"
+            android:textAllCaps="false"
+            />
 
         <Button
             android:id="@+id/btnForgot"
             style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Forgot your password?" />
-
-        <Button
-            android:id="@+id/btnLogin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Login" />
+            android:text="Forgot your password?"
+            android:fontFamily="@font/airbnb_cereal_bold"
+            android:textAllCaps="false"
+            />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

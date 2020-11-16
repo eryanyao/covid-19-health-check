@@ -15,6 +15,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -22,6 +23,7 @@ public class LoginActivity extends AppCompatActivity {
     Button btnForgot, btnLogin;
 
     FirebaseAuth firebaseAuth;
+    FirebaseUser firebaseUser;
 
     ProgressDialog pd;
 
@@ -32,6 +34,12 @@ public class LoginActivity extends AppCompatActivity {
         setTitle("Login");
         pd = new ProgressDialog(this);
         firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
+
+        if (hasValidAuthToken()) {
+            Intent intent = new Intent(LoginActivity.this,MainPageActivity.class);
+            startActivity(intent);
+        }
 
         txtPassword = findViewById(R.id.txtCurrentPassword);
         txtStudent = findViewById(R.id.txtStudent);
@@ -43,20 +51,24 @@ public class LoginActivity extends AppCompatActivity {
                 String student = txtStudent.getText().toString();
                 String password = txtPassword.getText().toString();
 
-                if (student.isEmpty() && password.isEmpty()) {
-                    Toast.makeText(LoginActivity.this, "All field must be key in.",
+
+                if(student.isEmpty() && password.isEmpty()){
+                    Toast.makeText(LoginActivity.this, "All fields are required",
                             Toast.LENGTH_SHORT).show();
-                    txtPassword.setError("Field Required.");
-                    txtStudent.setError("Field Required.");
-                } else if (student.isEmpty()) {
-                    txtStudent.setError("Field Required.");
-                } else if (password.isEmpty()) {
-                    txtPassword.setError("Field Required.");
-                } else if (!(student.isEmpty() && password.isEmpty())) {
+                    txtPassword.setError("Field required");
+                    txtStudent.setError("Field required");
+                }
+                else if(student.isEmpty()){
+                    txtStudent.setError("Field required");
+                }
+                else if(password.isEmpty()){
+                    txtPassword.setError("Field required");
+                }
+                else if(!(student.isEmpty() && password.isEmpty())){
+
                     String email = txtStudent.getText() + "@student.newinti.edu.my";
 
-                    pd.setTitle("Login to the system");
-                    pd.setMessage("wait a moment...");
+                    pd.setTitle("Please wait");
                     pd.show();
 
                     firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(
@@ -64,15 +76,17 @@ public class LoginActivity extends AppCompatActivity {
                                 @Override public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()) {
                                         Toast.makeText(LoginActivity.this,
-                                                "Login Successfully.\nWelcome\n" + student,
+                                                "Login successfully. Welcome, " + student,
                                                 Toast.LENGTH_SHORT).show();
                                         pd.dismiss();
 
-                                    } else {
-                                        Toast.makeText(LoginActivity.this, "Login Unsuccessfully" +
-                                                ".\n" +
-                                                " Please try again later.", Toast.LENGTH_SHORT)
-                                                .show();
+
+                                    }
+                                    else{
+                                        Toast.makeText(LoginActivity.this, "Login unsuccessfully" +
+                                                        "\n" +
+                                                "   Please try again", Toast.LENGTH_SHORT).show();
+
                                         pd.dismiss();
                                     }
                                 }
@@ -91,8 +105,12 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    public void forgot() {
-        Intent intent = new Intent(LoginActivity.this, ResetPasswordActivity.class);
+    public static boolean hasValidAuthToken() {
+        return FirebaseAuth.getInstance().getCurrentUser() != null ? true : false;
+    }
+
+    public void forgot(){
+        Intent intent = new Intent(LoginActivity.this,ResetPasswordActivity.class);
         startActivity(intent);
     }
 

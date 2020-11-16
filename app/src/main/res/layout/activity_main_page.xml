@@ -9,35 +9,42 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="282dp"
-            android:orientation="horizontal">
+            android:layout_height="320dp"
+            android:orientation="vertical"
+            android:background="@drawable/iu_campus"
+            android:paddingTop="25dp"
+            android:paddingBottom="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center"
+            android:gravity="center">
 
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imgUsr"
+                android:layout_width="match_parent"
+                android:layout_height="121dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/ic_launcher_background"
+                app:civ_border_color="@color/black"
+                app:civ_border_width="3dp" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_margin="10dp"
-                android:layout_marginStart="10dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
+                android:layout_marginEnd="30dp"
                 android:layout_marginBottom="10dp"
-                android:background="#F9CFCF"
+                android:paddingBottom="10dp"
+                android:background="@drawable/btn_round_bg"
                 android:filterTouchesWhenObscured="false"
                 android:fitsSystemWindows="false"
                 android:orientation="vertical"
@@ -45,53 +52,49 @@
 
                 <Space
                     android:layout_width="match_parent"
-                    android:layout_height="5dp" />
+                    android:layout_height="5dp"
+                    android:background="@drawable/btn_round_bg"
+                    />
 
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/imgUsr"
-                    android:layout_width="match_parent"
-                    android:layout_height="121dp"
-                    android:layout_centerHorizontal="true"
-                    android:src="@drawable/ic_launcher_background"
-                    app:civ_border_color="@color/black"
-                    app:civ_border_width="3dp" />
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#F9CFCF"
+
                     android:orientation="horizontal">
 
                     <Space
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:background="#F9CFCF" />
+                        />
 
                     <Space
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="#F9CFCF" />
+                        android:layout_weight="1" />
                 </LinearLayout>
 
                 <TextView
                     android:id="@+id/txtUserName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#F9CFCF"
-                    android:lineSpacingExtra="10sp"
-                    android:text="TextView"
+                    android:paddingTop="5dp"
+                    android:text="Loading.."
+                    android:fontFamily="@font/airbnb_cereal_black"
+                    android:textColor="@color/white"
                     android:textAlignment="center"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
+                    android:textAllCaps="false"
+                    android:textSize="24sp" />
 
                 <TextView
                     android:id="@+id/txtUserRoles"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#F9CFCF"
-                    android:text="TextView"
+                    android:fontFamily="@font/airbnb_cereal_medium"
+                    android:text="Loading.."
+                    android:textColor="@color/white"
                     android:textAlignment="center"
                     android:textSize="18sp" />
 
@@ -99,37 +102,47 @@
                     android:id="@+id/txtUserId"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:background="#F9CFCF"
-                    android:text="TextView"
+                    android:paddingTop="2dp"
+                    android:text="Loading.."
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/airbnb_cereal_medium"
                     android:textAlignment="center"
-                    android:textSize="14sp" />
+                    android:textSize="16sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:background="#F9CFCF"
-                    android:orientation="horizontal">
+                    android:paddingTop="10dp"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center"
+                    android:gravity="center">
 
                     <TextView
                         android:id="@+id/txtStatus"
-                        android:layout_width="193dp"
+                        android:layout_width="130dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
                         android:layout_weight="1"
-                        android:text="TextView"
-                        android:textSize="24sp"
-                        android:textStyle="bold" />
+                        android:text="Loading"
+                        android:fontFamily="@font/airbnb_cereal_bold"
+                        android:shadowColor="@color/black"
+                        android:shadowDx="-2"
+                        android:shadowDy="-2"
+                        android:textColor="#00FF55"
+                        android:textSize="24sp" />
 
                     <Button
                         android:id="@+id/btnUserBar"
-                        android:layout_width="152dp"
-                        android:layout_height="wrap_content"
+                        android:layout_width="140dp"
+                        android:layout_height="40dp"
                         android:layout_marginStart="20dp"
                         android:layout_marginEnd="20dp"
                         android:layout_weight="1"
-                        android:text="barcode"
+                        android:text="Show barcode"
+                        android:textSize="12dp"
+                        android:backgroundTint="#ec524b"
+                        android:textAllCaps="false"
+                        android:fontFamily="@font/airbnb_cereal_medium"
                         android:textAlignment="center" />
 
                 </LinearLayout>
@@ -140,85 +153,102 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
 
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/textView11"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:autoText="false"
-            android:text="Menu"
-            android:textAlignment="center"
-            android:textSize="24sp"
-            android:textStyle="bold" />
 
         <ScrollView
             style="@android:style/Widget.DeviceDefault.Light.ScrollView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="30dp"
                 android:orientation="vertical">
-
-                <Button
-                    android:id="@+id/btnCovid"
-                    style="@style/Widget.AppCompat.Button"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="  Covid-19 Tracker"
-                    android:textAlignment="textStart"
-                    app:icon="@drawable/ic_baseline_coronavirus_24" />
-
-                <Button
-                    android:id="@+id/btnCovid2"
-                    style="@style/Widget.AppCompat.Button"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="  Personnal Health Status"
-                    android:textAlignment="textStart"
-                    app:icon="@drawable/ic_baseline_person_24" />
 
                 <Button
                     android:id="@+id/btnSurvey"
                     style="@style/Widget.AppCompat.Button"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="  Daily Health Survey"
+                    android:layout_height="45dp"
+                    android:text="  Daily health survey"
+                    android:fontFamily="@font/airbnb_cereal_medium"
+                    android:textAllCaps="false"
                     android:textAlignment="textStart"
-                    app:icon="@drawable/ic_baseline_description_24" />
+                    app:icon="@drawable/ic_baseline_description_24"
+                    android:background="@drawable/main_page_button_bg"
+                    android:layout_marginBottom="5dp" />
+
+                <Button
+                    android:id="@+id/btnPersonnal"
+                    style="@style/Widget.AppCompat.Button"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:text="  Check symptoms"
+                    android:fontFamily="@font/airbnb_cereal_medium"
+                    android:textAlignment="textStart"
+                    android:textAllCaps="false"
+                    app:icon="@drawable/ic_baseline_person_24"
+                    android:background="@drawable/main_page_button_bg"
+                    android:layout_marginBottom="5dp"/>
+
+                <Button
+                    android:id="@+id/btnCovid"
+                    style="@style/Widget.AppCompat.Button"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:text="  Covid-19 tracker"
+                    android:fontFamily="@font/airbnb_cereal_medium"
+                    android:textAllCaps="false"
+                    android:textAlignment="textStart"
+                    app:icon="@drawable/ic_baseline_coronavirus_24"
+                    android:background="@drawable/main_page_button_bg"
+                    android:layout_marginBottom="5dp"/>
 
                 <Button
                     android:id="@+id/btnSurveyInsight"
                     style="@style/Widget.AppCompat.Button"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="  INTI Survey Insight"
+                    android:layout_height="45dp"
+                    android:text="  INTI daily health survey insight"
+                    android:fontFamily="@font/airbnb_cereal_medium"
+                    android:textAllCaps="false"
                     android:textAlignment="textStart"
-                    app:icon="@drawable/ic_baseline_dashboard_24" />
+                    app:icon="@drawable/ic_baseline_dashboard_24"
+                    android:background="@drawable/main_page_button_bg"
+                    android:layout_marginBottom="5dp"/>
 
                 <Button
                     android:id="@+id/btnSettings"
                     style="@style/Widget.AppCompat.Button"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:text="  Settings"
+                    android:fontFamily="@font/airbnb_cereal_medium"
+                    android:textAllCaps="false"
                     android:textAlignment="textStart"
-                    app:icon="@drawable/ic_baseline_settings_24" />
+                    app:icon="@drawable/ic_baseline_settings_24"
+                    android:background="@drawable/main_page_button_bg"
+                    android:layout_marginBottom="5dp"/>
 
                 <Button
                     android:id="@+id/btnLogout"
                     style="@style/Widget.AppCompat.Button"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:text="  Logout"
+                    android:fontFamily="@font/airbnb_cereal_medium"
+                    android:textAllCaps="false"
                     android:textAlignment="textStart"
-                    app:icon="@drawable/ic_baseline_exit_to_app_24" />
+                    app:icon="@drawable/ic_baseline_exit_to_app_24"
+                    android:background="@drawable/main_page_button_bg"/>
             </LinearLayout>
         </ScrollView>
 

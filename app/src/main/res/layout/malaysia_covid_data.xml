@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_white"
+    android:background="@drawable/inti_campus_2"
     tools:context=".covid.MalaysiaActivity">
 
     <androidx.cardview.widget.CardView
@@ -55,7 +55,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingLeft="10dp"
-                        android:text="Total Cases" />
+                        android:text="Total Cases"
+                        android:textSize="14dp"
+                        android:fontFamily="@font/airbnb_cereal_medium"/>
 
                 </LinearLayout>
 
@@ -74,7 +76,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingLeft="10dp"
-                        android:text="Recovered" />
+                        android:text="Recovered"
+                        android:textSize="14dp"
+                        android:fontFamily="@font/airbnb_cereal_medium"/>
 
                 </LinearLayout>
 
@@ -93,7 +97,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingLeft="10dp"
-                        android:text="Deaths" />
+                        android:text="Deaths"
+                        android:textSize="14dp"
+                        android:fontFamily="@font/airbnb_cereal_medium"/>
 
                 </LinearLayout>
 
@@ -112,7 +118,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingLeft="10dp"
-                        android:text="Active" />
+                        android:text="Active"
+                        android:textSize="14dp"
+                        android:fontFamily="@font/airbnb_cereal_medium"/>
 
                 </LinearLayout>
             </LinearLayout>
@@ -163,9 +171,9 @@
                         android:layout_marginLeft="25dp"
                         android:layout_marginTop="20dp"
                         android:text="Malaysia status"
-                        android:textAllCaps="true"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
+                        android:textAllCaps="false"
+                        android:textSize="17sp"
+                        android:fontFamily="@font/airbnb_cereal_extra_bold"/>
 
                     <View
                         android:layout_width="match_parent"
@@ -186,7 +194,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-light"
+                            android:fontFamily="@font/airbnb_cereal_bold"
                             android:text="Cases"
                             android:textSize="18sp" />
 
@@ -195,9 +203,8 @@
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
-                            android:fontFamily="sans-serif-light"
+                            android:fontFamily="@font/airbnb_cereal_book"
                             android:text="0"
-
                             android:textAlignment="textEnd"
                             android:textColor="@color/color_one"
                             android:textSize="18sp"
@@ -223,7 +230,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-light"
+                            android:fontFamily="@font/airbnb_cereal_bold"
                             android:text="Recovered"
                             android:textSize="18sp" />
 
@@ -232,7 +239,7 @@
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
-                            android:fontFamily="sans-serif-light"
+                            android:fontFamily="@font/airbnb_cereal_book"
                             android:text="0"
                             android:textAlignment="textEnd"
                             android:textColor="@color/color_one"
@@ -259,7 +266,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-light"
+                            android:fontFamily="@font/airbnb_cereal_bold"
                             android:text="Critical"
                             android:textSize="18sp" />
 
@@ -268,9 +275,8 @@
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
-                            android:fontFamily="sans-serif-light"
+                            android:fontFamily="@font/airbnb_cereal_book"
                             android:text="0"
-
                             android:textAlignment="textEnd"
                             android:textColor="@color/color_one"
                             android:textSize="18sp"
@@ -296,7 +302,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-light"
+                            android:fontFamily="@font/airbnb_cereal_bold"
                             android:text="Active"
                             android:textSize="18sp" />
 
@@ -305,9 +311,8 @@
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
-                            android:fontFamily="sans-serif-light"
+                            android:fontFamily="@font/airbnb_cereal_book"
                             android:text="0"
-
                             android:textAlignment="textEnd"
                             android:textColor="@color/color_one"
                             android:textSize="18sp"
@@ -333,7 +338,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-light"
+                            android:fontFamily="@font/airbnb_cereal_bold"
                             android:text="Today Cases"
                             android:textSize="18sp" />
 
@@ -342,9 +347,8 @@
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
-                            android:fontFamily="sans-serif-light"
+                            android:fontFamily="@font/airbnb_cereal_book"
                             android:text="0"
-
                             android:textAlignment="textEnd"
                             android:textColor="@color/color_one"
                             android:textSize="18sp"
@@ -370,7 +374,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-light"
+                            android:fontFamily="@font/airbnb_cereal_bold"
                             android:text="Total Deaths"
                             android:textSize="18sp" />
 
@@ -379,9 +383,8 @@
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
-                            android:fontFamily="sans-serif-light"
+                            android:fontFamily="@font/airbnb_cereal_book"
                             android:text="0"
-
                             android:textAlignment="textEnd"
                             android:textColor="@color/color_one"
                             android:textSize="18sp"
@@ -407,7 +410,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-light"
+                            android:fontFamily="@font/airbnb_cereal_bold"
                             android:text="Today Deaths"
                             android:textSize="18sp" />
 
@@ -416,9 +419,8 @@
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
-                            android:fontFamily="sans-serif-light"
+                            android:fontFamily="@font/airbnb_cereal_book"
                             android:text="0"
-
                             android:textAlignment="textEnd"
                             android:textColor="@color/color_one"
                             android:textSize="18sp"

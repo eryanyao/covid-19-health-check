@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.g3">
-  
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -13,7 +14,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.G3">
-<<<<<<< Updated upstream
 
         <activity android:name=".SurveyInsightActivity"></activity>
 
@@ -27,7 +27,7 @@
         <activity android:name=".SurveyActivity" />
         <activity android:name=".ResetPasswordActivity" />
         <activity android:name=".LoginActivity" />
-=======
+
         <activity android:name=".settings.ChangePassActivity"
             android:parentActivityName=".SettingsActivity"></activity>
         <activity android:name=".survey.SafeActivity" />
@@ -50,7 +50,23 @@
         <activity
             android:name=".LoginActivity"
             android:parentActivityName=".LoginOuterActivity" />
->>>>>>> Stashed changes
+
+        <activity android:name=".survey.SafeActivity"></activity>
+        <activity android:name=".survey.DangerActivity" />
+        <activity android:name=".SurveyInsightActivity" />
+        <activity
+            android:name=".settings.EditProfileActivity"
+            android:parentActivityName=".SettingsActivity" />
+        <activity
+            android:name=".SettingsActivity"
+            android:parentActivityName=".MainPageActivity" />
+      
+        <activity android:name=".MainPageActivity" />
+        <activity android:name=".LoginOuterActivity" />
+        <activity android:name=".SurveyActivity" android:parentActivityName=".MainPageActivity" />
+        <activity android:name=".ResetPasswordActivity" android:parentActivityName=".LoginActivity"/>
+        <activity android:name=".LoginActivity" android:parentActivityName=".LoginOuterActivity"/>
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -58,8 +74,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<<<<<<< Updated upstream
-
 
         <activity android:name=".covid.CovidActivity" android:parentActivityName=".MainPageActivity"/>
         <activity android:name=".covid.AffectedCountries"></activity>
@@ -68,7 +82,7 @@
   
         <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"/>
 
-=======
+
         <activity
             android:name=".covid.CovidActivity"
             android:parentActivityName=".MainPageActivity" />
@@ -77,11 +91,15 @@
         <activity
             android:name=".covid.MalaysiaActivity"
             android:parentActivityName=".covid.CovidActivity" />
+
         <activity
             android:name=".survey.HealthStatusActivity"
             android:parentActivityName=".MainPageActivity" />
         <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity" />
->>>>>>> Stashed changes
+
+        <activity android:name=".survey.HealthStatusActivity" android:parentActivityName=".MainPageActivity" />
+        <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity" />
+
     </application>
 
 </manifest>
