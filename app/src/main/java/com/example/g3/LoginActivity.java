@@ -20,7 +20,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class LoginActivity extends AppCompatActivity {
 
     EditText txtStudent, txtPassword;
-    Button btnForgot, btnLogin;
+    Button btnForgot,btnLogin;
 
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
@@ -41,7 +41,7 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(intent);
         }
 
-        txtPassword = findViewById(R.id.txtCurrentPassword);
+        txtPassword = findViewById(R.id.txtPassword);
         txtStudent = findViewById(R.id.txtStudent);
         btnForgot = findViewById(R.id.btnForgot);
         btnLogin = findViewById(R.id.btnLogin);
@@ -50,7 +50,6 @@ public class LoginActivity extends AppCompatActivity {
             @Override public void onClick(View view) {
                 String student = txtStudent.getText().toString();
                 String password = txtPassword.getText().toString();
-
 
                 if(student.isEmpty() && password.isEmpty()){
                     Toast.makeText(LoginActivity.this, "All fields are required",
@@ -65,33 +64,31 @@ public class LoginActivity extends AppCompatActivity {
                     txtPassword.setError("Field required");
                 }
                 else if(!(student.isEmpty() && password.isEmpty())){
-
                     String email = txtStudent.getText() + "@student.newinti.edu.my";
 
                     pd.setTitle("Please wait");
                     pd.show();
 
-                    firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(
+                    firebaseAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(
                             LoginActivity.this, new OnCompleteListener<AuthResult>() {
                                 @Override public void onComplete(@NonNull Task<AuthResult> task) {
-                                    if (task.isSuccessful()) {
+                                    if(task.isSuccessful()){
                                         Toast.makeText(LoginActivity.this,
                                                 "Login successfully. Welcome, " + student,
                                                 Toast.LENGTH_SHORT).show();
                                         pd.dismiss();
-
 
                                     }
                                     else{
                                         Toast.makeText(LoginActivity.this, "Login unsuccessfully" +
                                                         "\n" +
                                                 "   Please try again", Toast.LENGTH_SHORT).show();
-
                                         pd.dismiss();
                                     }
                                 }
                             });
-                } else {
+                }
+                else{
                     Toast.makeText(LoginActivity.this, "ERROR OCCURED.", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -114,7 +111,7 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void login() {
+    public void login(){
         Intent intent = new Intent(LoginActivity.this, MainPageActivity.class);
         startActivity(intent);
     }

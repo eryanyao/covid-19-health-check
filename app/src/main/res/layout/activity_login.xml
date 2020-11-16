@@ -55,7 +55,7 @@
             android:fontFamily="@font/airbnb_cereal_medium"/>
 
         <EditText
-            android:id="@+id/txtCurrentPassword"
+            android:id="@+id/txtPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
