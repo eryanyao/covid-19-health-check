@@ -35,6 +35,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".covid.CovidActivity"
             android:parentActivityName=".MainPageActivity" />
@@ -45,6 +46,11 @@
             android:parentActivityName=".covid.CovidActivity" />
         <activity android:name=".survey.HealthStatusActivity" android:parentActivityName=".MainPageActivity" />
         <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity" />
+
+        <activity android:name=".settings.ChangePassActivity"
+            android:parentActivityName=".SettingsActivity">
+
+        </activity>
     </application>
 
 </manifest>

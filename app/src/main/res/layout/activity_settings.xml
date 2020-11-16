@@ -32,5 +32,19 @@
             android:textStyle="bold"
             app:icon="@drawable/ic_baseline_photo_24"
             app:iconTint="#000000" />
+
+        <Button
+            android:id="@+id/btnChangePassword"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="86dp"
+            android:background="#E41414"
+            android:text="  Change Password "
+            android:textAlignment="textStart"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:icon="@drawable/ic_baseline_lock_24"
+            app:iconTint="#000000" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
