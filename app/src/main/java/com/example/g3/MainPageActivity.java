@@ -231,7 +231,8 @@ public class MainPageActivity extends AppCompatActivity {
                             "Current time:  " + time + "\n" +
                             "Last Covid-19 scanning:  " + convertLastCovidChecked + "\n"
                     , "QR Code");
-            bitmap1 = CreateImage(firebaseAuth.getUid(), "Barcode");
+
+            bitmap1 = CreateImage(firebaseAuth.getUid(), "QR Code");
             myBitmap = bitmap;
             myBarCode = bitmap1;
         } catch (WriterException we) {

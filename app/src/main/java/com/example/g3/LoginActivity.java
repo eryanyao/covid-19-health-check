@@ -67,6 +67,7 @@ public class LoginActivity extends AppCompatActivity {
                     String email = txtStudent.getText() + "@student.newinti.edu.my";
 
                     pd.setTitle("Please wait");
+                    pd.setMessage("Login to the system...");
                     pd.show();
 
                     firebaseAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(
