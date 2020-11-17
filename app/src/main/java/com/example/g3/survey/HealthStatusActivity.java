@@ -24,7 +24,6 @@ import androidx.appcompat.app.AppCompatActivity;
 public class HealthStatusActivity extends AppCompatActivity {
     CheckBox cbTemperature, cbContinuousCough, cbTaste;
     Button btnConfirm, btnDont;
-
     FirebaseFirestore firestore;
     FirebaseAuth firebaseAuth;
 
@@ -32,22 +31,19 @@ public class HealthStatusActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.health_survey_activity_main);
-
         firebaseAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
-
         cbTemperature = findViewById(R.id.checkBoxTemperature);
         cbContinuousCough = findViewById(R.id.checkBoxContinuousCough);
         cbTaste = findViewById(R.id.checkBoxTaste);
-
         btnConfirm = findViewById(R.id.btnContinues);
         btnDont = findViewById(R.id.btnDontHave);
-
         btnConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (!(cbContinuousCough.isChecked() || cbTaste.isChecked() || cbTemperature.isChecked())) {
-                    Toast.makeText(HealthStatusActivity.this, "Please select symptom(s) if any. Otherwise, click the button at the bottom" +
+                    Toast.makeText(HealthStatusActivity.this, "Please select symptom(s) " +
+                            "if any. Otherwise, click the button at the bottom" +
                             ".", Toast.LENGTH_SHORT).show();
                 } else {
                     AlertDialog.Builder builder = new AlertDialog.Builder(HealthStatusActivity.this);
@@ -69,7 +65,6 @@ public class HealthStatusActivity extends AppCompatActivity {
                                     pd.setTitle("Update Status");
                                     pd.setMessage("Please wait while saving your data");
                                     pd.show();
-
                                     firestore.collection("user").document(firebaseAuth.getCurrentUser().getUid())
                                             .update("userStatus", "Danger").addOnCompleteListener(
                                             new OnCompleteListener<Void>() {
@@ -80,7 +75,6 @@ public class HealthStatusActivity extends AppCompatActivity {
                                                             "successfully", Toast.LENGTH_SHORT).show();
                                                     pd.dismiss();
                                                     danger();
-
                                                 }
                                             }).addOnFailureListener(new OnFailureListener() {
                                         @Override
@@ -148,8 +142,6 @@ public class HealthStatusActivity extends AppCompatActivity {
                 builder.create().show();
             }
         });
-
-
     }
 
 

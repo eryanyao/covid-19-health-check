@@ -17,75 +17,70 @@ import com.example.g3.MainPageActivity;
 import com.example.g3.R;
 
 public class DangerActivity extends AppCompatActivity {
-    Button btnHome,btnHelp;
+    Button btnHome, btnHelp;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.health_danger);
-
         btnHome = findViewById(R.id.btnDangerHome);
         btnHelp = findViewById(R.id.btnDangerHelp);
-
         btnHome.setOnClickListener(new View.OnClickListener() {
-            @Override public void onClick(View view) {
+            @Override
+            public void onClick(View view) {
                 home();
             }
         });
-
         btnHelp.setOnClickListener(new View.OnClickListener() {
-            @Override public void onClick(View view) {
+            @Override
+            public void onClick(View view) {
 //                String phno="+60388810200";
                 callPhoneNumber();
             }
         });
     }
 
-    public void home(){
+    public void home() {
         Intent intent = new Intent(this, MainPageActivity.class);
         startActivity(intent);
     }
 
-    public void callPhoneNumber()
-    {
-        try
-        {
-            if(Build.VERSION.SDK_INT > 22)
-            {
-                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+    public void callPhoneNumber() {
+        try {
+            if (Build.VERSION.SDK_INT > 22) {
+                if (ActivityCompat.checkSelfPermission(this,
+                        Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
                     // TODO: Consider calling
-
-                    ActivityCompat.requestPermissions(DangerActivity.this, new String[]{Manifest.permission.CALL_PHONE}, 101);
-
+                    ActivityCompat.requestPermissions(
+                            DangerActivity.this, new String[]
+                                    {Manifest.permission.CALL_PHONE}, 101);
                     return;
                 }
-
                 Intent callIntent = new Intent(Intent.ACTION_CALL);
                 callIntent.setData(Uri.parse("tel:" + "+60388810200"));
                 startActivity(callIntent);
 
-            }
-            else {
+            } else {
                 Intent callIntent = new Intent(Intent.ACTION_CALL);
                 callIntent.setData(Uri.parse("tel:" + "+60388810200"));
                 startActivity(callIntent);
             }
-        }
-        catch (Exception ex)
-        {
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                                           int[] grantResults)
-    {
-        if(requestCode == 101)
-        {
-            if(grantResults[0] == PackageManager.PERMISSION_GRANTED)
-            {
+                                           int[] grantResults) {
+        if (requestCode == 101) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 callPhoneNumber();
             }
         }
     }
 }
+
+
+
+
