@@ -23,41 +23,36 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class ChangePassActivity extends AppCompatActivity {
     Button btnChange;
-    EditText txtCurrPass,txtNewPass,txtConfirmPass;
+    EditText txtCurrPass, txtNewPass, txtConfirmPass;
     FirebaseAuth auth;
     FirebaseUser user;
     ProgressDialog pd;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_pass);
-
         getSupportActionBar().setTitle("Change Password");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
         pd = new ProgressDialog(this);
-
         btnChange = findViewById(R.id.btnChangePass);
-
         txtCurrPass = findViewById(R.id.txtCurrentPassword);
         txtNewPass = findViewById(R.id.txtPassword);
         txtConfirmPass = findViewById(R.id.txtConfirmPassword);
-
         btnChange.setOnClickListener(new View.OnClickListener() {
-            @Override public void onClick(View view) {
+            @Override
+            public void onClick(View view) {
                 final String txtNew = txtNewPass.getText().toString();
                 String txtConfirm = txtConfirmPass.getText().toString();
                 final String txtCurrent = txtCurrPass.getText().toString();
-
-                if(txtNew.isEmpty() || txtConfirm.isEmpty() || txtCurrent.isEmpty()) {
+                if (txtNew.isEmpty() || txtConfirm.isEmpty() || txtCurrent.isEmpty()) {
                     Toast.makeText(ChangePassActivity.this,
                             "Please enter all field.",
                             Toast.LENGTH_SHORT).show();
-                }
-                else {
+                } else {
                     if (!txtNew.equals(txtConfirm)) {
                         txtConfirmPass.setError("Password must be same.");
                         txtNewPass.setError("Password must be same.");
@@ -76,7 +71,8 @@ public class ChangePassActivity extends AppCompatActivity {
                             pd.show();
                             Task<Void> voidTask = user.reauthenticate(credential)
                                     .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                        @Override public void onComplete(@NonNull Task<Void> task) {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
                                             if (task.isSuccessful()) {
                                                 Toast.makeText(ChangePassActivity.this,
                                                         "Re-Authentication " +
@@ -84,7 +80,8 @@ public class ChangePassActivity extends AppCompatActivity {
                                                         Toast.LENGTH_SHORT).show();
                                                 user.updatePassword(txtNew).addOnCompleteListener(
                                                         new OnCompleteListener<Void>() {
-                                                            @Override public void onComplete(
+                                                            @Override
+                                                            public void onComplete(
                                                                     @NonNull Task<Void> task) {
                                                                 Toast.makeText(
                                                                         ChangePassActivity.this,
@@ -96,7 +93,8 @@ public class ChangePassActivity extends AppCompatActivity {
                                                             }
                                                         }).addOnFailureListener(
                                                         new OnFailureListener() {
-                                                            @Override public void onFailure(
+                                                            @Override
+                                                            public void onFailure(
                                                                     @NonNull Exception e) {
                                                                 Toast.makeText(
                                                                         ChangePassActivity.this,
@@ -118,17 +116,16 @@ public class ChangePassActivity extends AppCompatActivity {
                                             }
                                         }
                                     });
-
                         }
-
                     }
                 }
             }
         });
     }
 
-    public void back(){
+    public void back() {
         Intent intent = new Intent(ChangePassActivity.this, MainPageActivity.class);
         startActivity(intent);
     }
 }
+

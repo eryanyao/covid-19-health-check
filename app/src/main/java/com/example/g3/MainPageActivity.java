@@ -53,23 +53,18 @@ public class MainPageActivity extends AppCompatActivity {
 
     ImageView success_imageview, barcode_iv;
     Button btnBar, btnSurvey, btnCovid, btnSettings, btnLogout, btnSurveyInsight, btnPersonnal;
-
     TextView txtName, txtId, txtRole, txtStatus, success_text;
     CircleImageView imgUser;
-
     FirebaseAuth firebaseAuth;
     FirebaseFirestore firestore;
     FirebaseUser firebaseUser;
-
     private String barcorde;
     private Bitmap myBitmap;
     private Bitmap myBarCode;
     private String time;
-
     private int size = 660;
     private int size_width = 660;
     private int size_height = 264;
-
     private String firstName;
     private String lastName;
     private String barcode;
@@ -84,18 +79,14 @@ public class MainPageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
-
         firebaseAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
-
         txtId = findViewById(R.id.txtUserId);
         txtName = findViewById(R.id.txtUserName);
         txtStatus = findViewById(R.id.txtStatus);
         txtRole = findViewById(R.id.txtUserRoles);
-
         imgUser = findViewById(R.id.imgUsr);
-
         btnBar = findViewById(R.id.btnUserBar);
         btnLogout = findViewById(R.id.btnLogout);
         btnSettings = findViewById(R.id.btnSettings);
@@ -103,7 +94,6 @@ public class MainPageActivity extends AppCompatActivity {
         btnSurvey = findViewById(R.id.btnSurvey);
         btnSurveyInsight = findViewById(R.id.btnSurveyInsight);
         btnPersonnal = findViewById(R.id.btnPersonnal);
-
         DocumentReference df = firestore.collection("user").document(firebaseUser.getUid());
         df.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
@@ -171,7 +161,11 @@ public class MainPageActivity extends AppCompatActivity {
         btnSurveyInsight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Uri uri = Uri.parse("https://app.powerbi.com/reportEmbed?reportId=3c155143-d316-41c9-9a9f-e08377412f39&autoAuth=true&ctid=ae5ed6e2-682f-4436-a3d2-d07186f2c1da&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLXNvdXRoLWVhc3QtYXNpYS1yZWRpcmVjdC5hbmFseXNpcy53aW5kb3dzLm5ldC8ifQ%3D%3D");
+                Uri uri = Uri.parse("https://app.powerbi.com/reportEmbed?reportId=3c15" +
+                        "5143-d316-41c9-9a9f-e08377412f39&autoAuth=true&ctid=ae5ed6e2-" +
+                        "682f-4436-a3d2-d07186f2c1da&config=eyJjbHVzdGVyVXJsIjoiaHR0cH" +
+                        "M6Ly93YWJpLXNvdXRoLWVhc3QtYXNpYS1yZWRpcmVjdC5hbmFseXNpcy53aW5kb" +
+                        "3dzLm5ldC8ifQ%3D%3D");
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
             }
@@ -206,7 +200,6 @@ public class MainPageActivity extends AppCompatActivity {
     public void generate() {
         Bitmap bitmap = null;
         Bitmap bitmap1 = null;
-
         try {
             Calendar calendar = Calendar.getInstance();
             int year = calendar.get(Calendar.YEAR);
@@ -216,10 +209,11 @@ public class MainPageActivity extends AppCompatActivity {
             int minute = calendar.get(Calendar.MINUTE);
             int second = calendar.get(Calendar.SECOND);
             int millisecond = calendar.get(Calendar.MILLISECOND);
-
-            String fileName = String.valueOf(year) + "_" + String.valueOf(month) + "_" + String.valueOf(day) + "_" + String.valueOf(hour) + "_" + String.valueOf(minute) + "_" + String.valueOf(second) + "_" + String.valueOf(millisecond);
-            time = String.valueOf(year) + "-" + String.valueOf(month) + "-" + String.valueOf(day) + " " + String.valueOf(hour) + ":" + String.valueOf(minute) + ":" + String.valueOf(second);
-
+            String fileName = String.valueOf(year) + "_" + String.valueOf(month) + "_" + String.valueOf(day) +
+                    "_" + String.valueOf(hour) + "_" + String.valueOf(minute) + "_" + String.valueOf(second) +
+                    "_" + String.valueOf(millisecond);
+            time = String.valueOf(year) + "-" + String.valueOf(month) + "-" + String.valueOf(day) +
+                    " " + String.valueOf(hour) + ":" + String.valueOf(minute) + ":" + String.valueOf(second);
             bitmap = CreateImage(
                     "User's unique ID:  " + firebaseAuth.getUid() + "\n" +
                             "Health status:  " + status + "\n" +
@@ -231,7 +225,6 @@ public class MainPageActivity extends AppCompatActivity {
                             "Current time:  " + time + "\n" +
                             "Last Covid-19 scanning:  " + convertLastCovidChecked + "\n"
                     , "QR Code");
-
             bitmap1 = CreateImage(firebaseAuth.getUid(), "QR Code");
             myBitmap = bitmap;
             myBarCode = bitmap1;
@@ -240,7 +233,6 @@ public class MainPageActivity extends AppCompatActivity {
         }
 
         if (bitmap != null) {
-
             saveBitmap(myBarCode, barcorde, ".jpg");
             saveBitmap(myBitmap, barcorde, ".jpg");
             LayoutInflater layoutInflater = LayoutInflater.from(MainPageActivity.this);
@@ -263,7 +255,6 @@ public class MainPageActivity extends AppCompatActivity {
             success_imageview.setImageBitmap(myBitmap);
             barcode_iv = (ImageView) view.findViewById(R.id.success_imageview2);
             barcode_iv.setImageBitmap(myBarCode);
-
             builder.setPositiveButton("Close", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
@@ -284,7 +275,6 @@ public class MainPageActivity extends AppCompatActivity {
         if (permission != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, PERMISSIONS, 1);
         }
-
         Calendar calendar = Calendar.getInstance();
         int year = calendar.get(Calendar.YEAR);
         int month = calendar.get(Calendar.MONTH) + 1;
@@ -293,39 +283,35 @@ public class MainPageActivity extends AppCompatActivity {
         int minute = calendar.get(Calendar.MINUTE);
         int second = calendar.get(Calendar.SECOND);
         int millisecond = calendar.get(Calendar.MILLISECOND);
-
-        String fileName = message + "_at_" + String.valueOf(year) + "_" + String.valueOf(month) + "_" + String.valueOf(day) + "_" + String.valueOf(hour) + "_" + String.valueOf(minute) + "_" + String.valueOf(second) + "_" + String.valueOf(millisecond);
-        time = String.valueOf(year) + "-" + String.valueOf(month) + "-" + String.valueOf(day) + " " + String.valueOf(hour) + ":" + String.valueOf(minute) + ":" + String.valueOf(second);
+        String fileName = message + "_at_" + String.valueOf(year) + "_" + String.valueOf(month) +
+                "_" + String.valueOf(day) + "_" + String.valueOf(hour) + "_" + String.valueOf(minute) +
+                "_" + String.valueOf(second) + "_" + String.valueOf(millisecond);
+        time = String.valueOf(year) + "-" + String.valueOf(month) + "-" + String.valueOf(day) +
+                " " + String.valueOf(hour) + ":" + String.valueOf(minute) + ":" + String.valueOf(second);
         File file;
-
         String fileLocation;
-
         String folderLocation;
-
         if (Build.BRAND.equals("Xiaomi")) {
-            fileLocation = Environment.getExternalStorageDirectory().getPath() + "/DCIM/Camera/AndroidBarcodeGenerator/" + fileName + bitName;
-            folderLocation = Environment.getExternalStorageDirectory().getPath() + "/DCIM/Camera/AndroidBarcodeGenerator/";
+            fileLocation = Environment.getExternalStorageDirectory().getPath() +
+                    "/DCIM/Camera/AndroidBarcodeGenerator/" + fileName + bitName;
+            folderLocation = Environment.getExternalStorageDirectory().getPath() +
+                    "/DCIM/Camera/AndroidBarcodeGenerator/";
         } else {
-            fileLocation = Environment.getExternalStorageDirectory().getPath() + "/DCIM/AndroidBarcodeGenerator/" + fileName + bitName;
-            folderLocation = Environment.getExternalStorageDirectory().getPath() + "/DCIM/AndroidBarcodeGenerator/";
+            fileLocation = Environment.getExternalStorageDirectory().getPath() +
+                    "/DCIM/AndroidBarcodeGenerator/" + fileName + bitName;
+            folderLocation = Environment.getExternalStorageDirectory().getPath() +
+                    "/DCIM/AndroidBarcodeGenerator/";
         }
-
         Log.d("file_location", fileLocation);
-
         file = new File(fileLocation);
-
         File folder = new File(folderLocation);
         if (!folder.exists()) {
             folder.mkdirs();
         }
-
         if (file.exists()) {
             file.delete();
         }
-
-
         FileOutputStream out;
-
         try {
             out = new FileOutputStream(file);
             if (bitmap.compress(Bitmap.CompressFormat.JPEG, 90, out)) {
@@ -337,18 +323,15 @@ public class MainPageActivity extends AppCompatActivity {
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }
-
         this.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.parse("file://" + fileName)));
-
     }
+
 
     public Bitmap CreateImage(String message, String type) throws WriterException {
         BitMatrix bitMatrix = null;
-
         switch (type) {
             case "QR Code":
-                bitMatrix =
-                        new MultiFormatWriter().encode(message, BarcodeFormat.QR_CODE, size, size);
+                bitMatrix = new MultiFormatWriter().encode(message, BarcodeFormat.QR_CODE, size, size);
                 break;
             case "Barcode":
                 bitMatrix = new MultiFormatWriter()

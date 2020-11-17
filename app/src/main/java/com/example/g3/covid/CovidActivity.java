@@ -35,11 +35,9 @@ public class CovidActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.covid_act_main);
-
         getSupportActionBar().setTitle("Global Covid-19 Overview");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-
         tvCases = findViewById(R.id.tvCases);
         tvRecovered = findViewById(R.id.tvRecovered);
         tvCritical = findViewById(R.id.tvCritical);
@@ -48,30 +46,23 @@ public class CovidActivity extends AppCompatActivity {
         tvTotalDeaths = findViewById(R.id.tvTotalDeaths);
         tvTodayDeaths = findViewById(R.id.tvTodayDeaths);
         tvAffectedCountries = findViewById(R.id.tvAffectedCountries);
-
         simpleArcLoader = findViewById(R.id.loader);
         scrollView = findViewById(R.id.scrollStats);
         pieChart = findViewById(R.id.piechart);
-
         fetchData();
     }
 
     private void fetchData() {
-
         // https://www.coronatracker.com/country/malaysia/
         //get global's covid-19 data
         String url = "https://disease.sh/v3/covid-19/all";
-
         simpleArcLoader.start();
-
         StringRequest request = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-
                         try {
                             JSONObject jsonObject = new JSONObject(response.toString());
-
                             tvCases.setText(jsonObject.getString("cases"));
                             tvRecovered.setText(jsonObject.getString("recovered"));
                             tvCritical.setText(jsonObject.getString("critical"));
@@ -80,24 +71,28 @@ public class CovidActivity extends AppCompatActivity {
                             tvTotalDeaths.setText(jsonObject.getString("deaths"));
                             tvTodayDeaths.setText(jsonObject.getString("todayDeaths"));
                             tvAffectedCountries.setText(jsonObject.getString("affectedCountries"));
-
-                            pieChart.addPieSlice(new PieModel("Cases", Integer.parseInt(tvCases.getText().toString()), Color.parseColor("#FFA726")));
-                            pieChart.addPieSlice(new PieModel("Recoverd", Integer.parseInt(tvRecovered.getText().toString()), Color.parseColor("#66BB6A")));
-                            pieChart.addPieSlice(new PieModel("Deaths", Integer.parseInt(tvTotalDeaths.getText().toString()), Color.parseColor("#EF5350")));
-                            pieChart.addPieSlice(new PieModel("Active", Integer.parseInt(tvActive.getText().toString()), Color.parseColor("#29B6F6")));
+                            pieChart.addPieSlice(new PieModel("Cases",
+                                    Integer.parseInt(tvCases.getText().toString()),
+                                    Color.parseColor("#FFA726")));
+                            pieChart.addPieSlice(new PieModel("Recoverd",
+                                    Integer.parseInt(tvRecovered.getText().toString()),
+                                    Color.parseColor("#66BB6A")));
+                            pieChart.addPieSlice(new PieModel("Deaths",
+                                    Integer.parseInt(tvTotalDeaths.getText().toString()),
+                                    Color.parseColor("#EF5350")));
+                            pieChart.addPieSlice(new PieModel("Active",
+                                    Integer.parseInt(tvActive.getText().toString()),
+                                    Color.parseColor("#29B6F6")));
                             pieChart.startAnimation();
-
                             simpleArcLoader.stop();
                             simpleArcLoader.setVisibility(View.GONE);
                             scrollView.setVisibility(View.VISIBLE);
-
                         } catch (JSONException e) {
                             e.printStackTrace();
                             simpleArcLoader.stop();
                             simpleArcLoader.setVisibility(View.GONE);
                             scrollView.setVisibility(View.VISIBLE);
                         }
-
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -108,7 +103,6 @@ public class CovidActivity extends AppCompatActivity {
                 Toast.makeText(CovidActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(request);
     }
@@ -121,3 +115,8 @@ public class CovidActivity extends AppCompatActivity {
         startActivity(new Intent(getApplicationContext(), MalaysiaActivity.class));
     }
 }
+
+
+
+
+

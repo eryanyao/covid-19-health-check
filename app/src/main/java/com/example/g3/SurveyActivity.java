@@ -18,9 +18,9 @@ public class SurveyActivity extends AppCompatActivity {
 
         webView = (WebView) findViewById(R.id.mWebView);
         webView.setWebViewClient(new WebViewClient());
-        webView.loadUrl("https://forms.office.com/Pages/ResponsePage.aspx?id=4tZeri9oNkSj0tBxhvLB2iBKZKHFr79KjmxF1C9qLrpUNjJKNUc1S1pQUTRQNkRWWEtPM0pHS0RVQi4u");
-
-
+        webView.loadUrl("https://forms.office.com/Pages/ResponsePage.a" +
+                "spx?id=4tZeri9oNkSj0tBxhvLB2iBKZKHFr79Kjmx" +
+                "F1C9qLrpUNjJKNUc1S1pQUTRQNkRWWEtPM0pHS0RVQi4u");
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
     }
@@ -35,3 +35,8 @@ public class SurveyActivity extends AppCompatActivity {
         }
     }
 }
+
+
+
+
+

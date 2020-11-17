@@ -23,11 +23,11 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/profileImg"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:text="Change your Profile Picture"
+        android:layout_marginTop="30dp"
+        android:text="Change your profile picture"
+        android:fontFamily="@font/airbnb_cereal_medium"
         android:textAlignment="center"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        android:textSize="24sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -41,20 +41,25 @@
         <Button
             android:id="@+id/btnClose"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
             android:layout_weight="1"
             android:text="Close"
-            android:textStyle="bold"
+            android:textAllCaps="false"
+            android:fontFamily="@font/airbnb_cereal_medium"
+            android:background="@drawable/main_page_button_bg"
+            android:textSize="14sp"
             android:layout_marginRight="6dp"/>
 
         <Button
             android:id="@+id/btnSave"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
             android:layout_weight="1"
             android:text="Save"
-            android:textStyle="bold"
-            android:layout_marginRight="6dp"/>
+            android:textAllCaps="false"
+            android:fontFamily="@font/airbnb_cereal_medium"
+            android:background="@drawable/main_page_button_bg"
+            />
     </LinearLayout>
 
 

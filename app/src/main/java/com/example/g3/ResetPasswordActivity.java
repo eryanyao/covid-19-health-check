@@ -17,50 +17,44 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class ResetPasswordActivity extends AppCompatActivity {
     EditText txtStudent;
-    Button btnReset,btnBack;
+    Button btnReset, btnBack;
     FirebaseAuth firebaseAuth;
-
     ProgressDialog pd;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reset_password);
         setTitle("Reset Password");
         pd = new ProgressDialog(this);
-
         firebaseAuth = FirebaseAuth.getInstance();
-
         btnReset = findViewById(R.id.btnReset);
         txtStudent = findViewById(R.id.txtResetStudent);
-
         btnReset.setOnClickListener(new View.OnClickListener() {
-            @Override public void onClick(View view) {
+            @Override
+            public void onClick(View view) {
                 String student = txtStudent.getText().toString().trim();
-                if(student.isEmpty()){
-                    Toast.makeText(getApplicationContext(),"Please enter your student ID",
+                if (student.isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "Please enter your student ID",
                             Toast.LENGTH_SHORT).show();
                     txtStudent.setError("Field Required");
-
-                }
-                else{
+                } else {
                     String email = txtStudent.getText() + "@student.newinti.edu.my";
-
                     pd.setTitle("Sending email to your email address for reset password");
                     pd.setMessage("wait a moment..");
                     pd.show();
-
                     firebaseAuth.sendPasswordResetEmail(email).addOnCompleteListener(
                             new OnCompleteListener<Void>() {
-                                @Override public void onComplete(@NonNull Task<Void> task) {
-                                    if(task.isSuccessful()) {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
                                         pd.dismiss();
                                         Toast.makeText(ResetPasswordActivity.this, "The reset " +
                                                 "password email already sent. Please check your " +
                                                 "email inbox", Toast.LENGTH_SHORT).show();
-                                    }
-                                    else{
+                                    } else {
                                         pd.dismiss();
-                                        Toast.makeText(ResetPasswordActivity.this,"Failed to send" +
+                                        Toast.makeText(ResetPasswordActivity.this, "Failed to send" +
                                                         " the email for reset password. Please try again " +
                                                         "later",
                                                 Toast.LENGTH_SHORT).show();
@@ -71,10 +65,9 @@ public class ResetPasswordActivity extends AppCompatActivity {
                 }
             }
         });
-
     }
 
-    public void login(){
+    public void login() {
         Intent intent = new Intent(ResetPasswordActivity.this, LoginActivity.class);
         startActivity(intent);
     }
