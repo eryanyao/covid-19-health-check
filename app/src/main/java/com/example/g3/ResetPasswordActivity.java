@@ -35,7 +35,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String student = txtStudent.getText().toString().trim();
                 if (student.isEmpty()) {
-                    Toast.makeText(getApplicationContext(), "Please enter your student ID",
+                    Toast.makeText(getApplicationContext(), "Please enter your staff/student ID",
                             Toast.LENGTH_SHORT).show();
                     txtStudent.setError("Field Required");
                 } else {
