@@ -155,7 +155,8 @@
         <ScrollView
             style="@android:style/Widget.DeviceDefault.Light.ScrollView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:paddingBottom="20px">
 
             <LinearLayout
                 android:layout_width="match_parent"

@@ -43,5 +43,6 @@
     <string name="change_taste_desc">
         This means you have noticed that you cannot smell or taste anything, or that things smell or taste different to normal.
     </string>
+    <string name="i_don_t_have_any_of_these_symptoms"><u>I don\'t have any of these symptoms</u></string>
 
 </resources>

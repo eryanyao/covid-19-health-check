@@ -33,7 +33,7 @@
             android:textSize="24sp"
             android:textStyle="bold"
             android:textColor="@color/recovered"
-            android:text="You have unlikely to have conoravirus"
+            android:text="You are unlikely to have Conoravirus"
             android:fontFamily="@font/airbnb_cereal_bold"/>
 
         <TextView
