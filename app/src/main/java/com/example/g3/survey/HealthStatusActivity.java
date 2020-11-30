@@ -21,6 +21,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.Date;
+
 public class HealthStatusActivity extends AppCompatActivity {
     CheckBox cbTemperature, cbContinuousCough, cbTaste;
     Button btnConfirm, btnDont;
@@ -65,13 +67,17 @@ public class HealthStatusActivity extends AppCompatActivity {
                                     pd.setTitle("Update Status");
                                     pd.setMessage("Please wait while saving your data");
                                     pd.show();
+
+                                    Date todayNew = new Date();
+                                    firestore.collection("user").document(firebaseAuth.getCurrentUser().getUid())
+                                            .update("userLastCovidChecked", todayNew);
                                     firestore.collection("user").document(firebaseAuth.getCurrentUser().getUid())
                                             .update("userStatus", "Danger").addOnCompleteListener(
                                             new OnCompleteListener<Void>() {
                                                 @Override
                                                 public void onComplete(@NonNull Task<Void> task) {
                                                     Toast.makeText(HealthStatusActivity.this, "Health " +
-                                                            "status has updated " +
+                                                            "status and date updated " +
                                                             "successfully", Toast.LENGTH_SHORT).show();
                                                     pd.dismiss();
                                                     danger();
@@ -80,7 +86,7 @@ public class HealthStatusActivity extends AppCompatActivity {
                                         @Override
                                         public void onFailure(@NonNull Exception e) {
                                             Toast.makeText(HealthStatusActivity.this, "Health " +
-                                                            "status update " +
+                                                            "status and date updated " +
                                                             "unsuccessfully.\nPlease try again",
                                                     Toast.LENGTH_SHORT).show();
                                             pd.dismiss();
@@ -116,13 +122,16 @@ public class HealthStatusActivity extends AppCompatActivity {
                                 pd.setMessage("Please wait while saving your data");
                                 pd.show();
 
+                                Date todayNew = new Date();
+                                firestore.collection("user").document(firebaseAuth.getCurrentUser().getUid())
+                                        .update("userLastCovidChecked", todayNew);
                                 firestore.collection("user").document(firebaseAuth.getCurrentUser().getUid())
                                         .update("userStatus", "Safe").addOnCompleteListener(
                                         new OnCompleteListener<Void>() {
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {
-                                                Toast.makeText(HealthStatusActivity.this, "Health " +
-                                                        "status update " +
+                                                Toast.makeText(HealthStatusActivity.this, "Health status and date " +
+                                                        "updated " +
                                                         "successfully.", Toast.LENGTH_SHORT).show();
                                                 pd.dismiss();
                                                 safe();
@@ -131,7 +140,7 @@ public class HealthStatusActivity extends AppCompatActivity {
                                     @Override
                                     public void onFailure(@NonNull Exception e) {
                                         Toast.makeText(HealthStatusActivity.this, "Health " +
-                                                        "status update " +
+                                                        "status and date updated " +
                                                         "unsuccessfully.\nPlease try again",
                                                 Toast.LENGTH_SHORT).show();
                                         pd.dismiss();
