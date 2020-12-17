@@ -21,6 +21,8 @@ The **QR code generated** has to be scanned with the [Medicine QR code scanner](
 
 ### System workflow
 
+*(Solely focusing on **Medicine App**)*
+
 ![Medicine Health Check System Workflow](img/medicine-health-check-system-workflow.png)
 
 ### Mobile screenshots
