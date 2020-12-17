@@ -93,4 +93,4 @@
 
 ## Acknowledgements
 
-This is one of the projects built by Chung Yee Han, Er Yan Yao, and Low Yong Ting in 2 weeks time (November 2020) for course subject **Mobile Application Development, PRG4201** by **Dr. Deshinta Arrova Dewi**.
+This is one of the projects built by Chung Yee Han, Er Yan Yao, and Low Yong Ting in November 2020 with 2 weeks time for course subject **Mobile Application Development, PRG4201** by **Dr. Deshinta Arrova Dewi**.
